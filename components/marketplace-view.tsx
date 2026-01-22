@@ -1,10 +1,10 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import {
   Search,
   SlidersHorizontal,
@@ -17,10 +17,18 @@ import {
   Grid3x3,
   User,
   ShoppingBag,
-} from "lucide-react"
-import { cn } from "@/lib/utils"
+} from "lucide-react";
+import { cn } from "@/lib/utils";
 
-const categories = ["All", "Manufacturing", "Technology", "Office Supplies", "Raw Materials", "Services", "Equipment"]
+const categories = [
+  "All",
+  "Manufacturing",
+  "Technology",
+  "Office Supplies",
+  "Raw Materials",
+  "Services",
+  "Equipment",
+];
 
 const products = [
   {
@@ -77,14 +85,16 @@ const products = [
     image: "/cnc-machine-industrial.jpg",
     category: "Equipment",
   },
-]
+];
 
 export function MarketplaceView() {
-  const [selectedCategory, setSelectedCategory] = useState("All")
-  const [activeTab, setActiveTab] = useState("home")
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [activeTab, setActiveTab] = useState("home");
 
   const filteredProducts =
-    selectedCategory === "All" ? products : products.filter((p) => p.category === selectedCategory)
+    selectedCategory === "All"
+      ? products
+      : products.filter((p) => p.category === selectedCategory);
 
   return (
     <div className="min-h-screen bg-background pb-20">
@@ -101,7 +111,10 @@ export function MarketplaceView() {
           {/* Search bar */}
           <div className="relative">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-            <Input placeholder="Search products, services, companies..." className="pl-10 h-12 bg-muted/50" />
+            <Input
+              placeholder="Search products, services, companies..."
+              className="pl-10 h-12 bg-muted/50"
+            />
           </div>
 
           {/* Categories */}
@@ -110,7 +123,9 @@ export function MarketplaceView() {
               {categories.map((category) => (
                 <Button
                   key={category}
-                  variant={selectedCategory === category ? "default" : "outline"}
+                  variant={
+                    selectedCategory === category ? "default" : "outline"
+                  }
                   size="sm"
                   onClick={() => setSelectedCategory(category)}
                   className="whitespace-nowrap rounded-full"
@@ -132,7 +147,11 @@ export function MarketplaceView() {
             onClick={() => (window.location.href = `/product/${product.id}`)}
           >
             <div className="relative">
-              <img src={product.image || "/placeholder.svg"} alt={product.title} className="w-full h-48 object-cover" />
+              <img
+                src={product.image || "/placeholder.svg"}
+                alt={product.title}
+                className="w-full h-48 object-cover"
+              />
               {product.hasVideo && (
                 <Badge className="absolute top-3 right-3 bg-primary">
                   <Video className="h-3 w-3 mr-1" />
@@ -143,20 +162,38 @@ export function MarketplaceView() {
             <CardContent className="p-4">
               <div className="space-y-3">
                 <div>
-                  <h3 className="font-semibold text-lg leading-tight line-clamp-2">{product.title}</h3>
-                  <p className="text-sm text-muted-foreground mt-1">{product.company}</p>
+                  <h3 className="font-semibold text-lg leading-tight line-clamp-2">
+                    {product.title}
+                  </h3>
+                  <p className="text-sm text-muted-foreground mt-1">
+                    {product.company}
+                  </p>
                 </div>
 
                 <div className="flex items-center justify-between">
-                  <span className="text-xl font-bold text-primary">{product.price}</span>
+                  <span className="text-xl font-bold text-primary">
+                    {product.price}
+                  </span>
                   <div className="flex gap-2">
-                    <Button size="icon" variant="ghost" onClick={(e) => e.stopPropagation()}>
+                    <Button
+                      size="icon"
+                      variant="ghost"
+                      onClick={(e) => e.stopPropagation()}
+                    >
                       <Bookmark className="h-5 w-5" />
                     </Button>
-                    <Button size="icon" variant="ghost" onClick={(e) => e.stopPropagation()}>
+                    <Button
+                      size="icon"
+                      variant="ghost"
+                      onClick={(e) => e.stopPropagation()}
+                    >
                       <Share2 className="h-5 w-5" />
                     </Button>
-                    <Button size="icon" variant="ghost" onClick={(e) => e.stopPropagation()}>
+                    <Button
+                      size="icon"
+                      variant="ghost"
+                      onClick={(e) => e.stopPropagation()}
+                    >
                       <MessageCircle className="h-5 w-5" />
                     </Button>
                   </div>
@@ -177,12 +214,15 @@ export function MarketplaceView() {
       </Button>
 
       {/* Bottom Navigation */}
-      <div className="fixed bottom-0 left-0 right-0 bg-background border-t border-border">
+      <div className="fixed bottom-0 left-0 right-0 bg-background border-t border-border lg:hidden">
         <div className="flex items-center justify-around p-3">
           <Button
             variant="ghost"
             size="sm"
-            className={cn("flex-col h-auto py-2 gap-1", activeTab === "home" && "text-primary")}
+            className={cn(
+              "flex-col h-auto py-2 gap-1",
+              activeTab === "home" && "text-primary",
+            )}
             onClick={() => setActiveTab("home")}
           >
             <Home className="h-5 w-5" />
@@ -191,10 +231,13 @@ export function MarketplaceView() {
           <Button
             variant="ghost"
             size="sm"
-            className={cn("flex-col h-auto py-2 gap-1", activeTab === "catalogs" && "text-primary")}
+            className={cn(
+              "flex-col h-auto py-2 gap-1",
+              activeTab === "catalogs" && "text-primary",
+            )}
             onClick={() => {
-              setActiveTab("catalogs")
-              window.location.href = "/catalogs"
+              setActiveTab("catalogs");
+              window.location.href = "/catalogs";
             }}
           >
             <Grid3x3 className="h-5 w-5" />
@@ -203,10 +246,13 @@ export function MarketplaceView() {
           <Button
             variant="ghost"
             size="sm"
-            className={cn("flex-col h-auto py-2 gap-1", activeTab === "orders" && "text-primary")}
+            className={cn(
+              "flex-col h-auto py-2 gap-1",
+              activeTab === "orders" && "text-primary",
+            )}
             onClick={() => {
-              setActiveTab("orders")
-              window.location.href = "/dashboard"
+              setActiveTab("orders");
+              window.location.href = "/dashboard";
             }}
           >
             <ShoppingBag className="h-5 w-5" />
@@ -215,10 +261,13 @@ export function MarketplaceView() {
           <Button
             variant="ghost"
             size="sm"
-            className={cn("flex-col h-auto py-2 gap-1", activeTab === "profile" && "text-primary")}
+            className={cn(
+              "flex-col h-auto py-2 gap-1",
+              activeTab === "profile" && "text-primary",
+            )}
             onClick={() => {
-              setActiveTab("profile")
-              window.location.href = "/profile"
+              setActiveTab("profile");
+              window.location.href = "/profile";
             }}
           >
             <User className="h-5 w-5" />
@@ -227,5 +276,5 @@ export function MarketplaceView() {
         </div>
       </div>
     </div>
-  )
+  );
 }
