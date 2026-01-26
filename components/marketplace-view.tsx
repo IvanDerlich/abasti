@@ -139,7 +139,7 @@ export function MarketplaceView() {
       </div>
 
       {/* Product Grid */}
-      <div className="p-4 space-y-4">
+      <div className="p-4 grid grid-cols-2 gap-3">
         {filteredProducts.map((product) => (
           <Card
             key={product.id}
@@ -150,7 +150,7 @@ export function MarketplaceView() {
               <img
                 src={product.image || "/placeholder.svg"}
                 alt={product.title}
-                className="w-full h-48 object-cover"
+                className="w-full h-36 object-cover"
               />
               {product.hasVideo && (
                 <Badge className="absolute top-3 right-3 bg-primary">
@@ -159,19 +159,19 @@ export function MarketplaceView() {
                 </Badge>
               )}
             </div>
-            <CardContent className="p-4">
-              <div className="space-y-3">
+            <CardContent className="p-3">
+              <div className="space-y-2">
                 <div>
-                  <h3 className="font-semibold text-lg leading-tight line-clamp-2">
+                  <h3 className="font-semibold text-base leading-tight line-clamp-2">
                     {product.title}
                   </h3>
-                  <p className="text-sm text-muted-foreground mt-1">
+                  <p className="text-sm text-muted-foreground mt-0.5">
                     {product.company}
                   </p>
                 </div>
 
                 <div className="flex items-center justify-between">
-                  <span className="text-xl font-bold text-primary">
+                  <span className="text-lg font-bold text-primary">
                     {product.price}
                   </span>
                   <div className="flex gap-2">
