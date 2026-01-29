@@ -39,7 +39,7 @@ export function AppShell({ children }: AppShellProps) {
             <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
               <span className="text-primary-foreground font-bold text-lg">L</span>
             </div>
-            <span className="text-xl font-bold text-sidebar-foreground">Loop</span>
+            <span className="text-xl font-bold text-sidebar-foreground">Abasti</span>
           </Link>
         </div>
 

@@ -31,7 +31,7 @@ export function PublishSuccessView() {
           <div>
             <h1 className="text-3xl font-bold mb-2">¡Producto Publicado!</h1>
             <p className="text-muted-foreground">
-              Tu producto ya está disponible en Loop y los compradores pueden verlo ahora mismo
+              Tu producto ya está disponible en Abasti y los compradores pueden verlo ahora mismo
             </p>
           </div>
 

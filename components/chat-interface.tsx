@@ -24,7 +24,7 @@ const initialMessages: Message[] = [
   {
     id: 2,
     type: "ai",
-    content: "Hi! I'm Loop AI. I can help answer questions about this product. What would you like to know?",
+    content: "Hi! I'm Abasti AI. I can help answer questions about this product. What would you like to know?",
     suggestions: ["Request quote", "Stock availability", "Product specs", "Shipping options"],
   },
 ]
@@ -97,7 +97,7 @@ export function ChatInterface() {
               <Sparkles className="h-5 w-5 text-primary" />
             </div>
             <div>
-              <h1 className="text-lg font-semibold">Loop AI</h1>
+              <h1 className="text-lg font-semibold">Abasti AI</h1>
               <p className="text-xs text-muted-foreground">Always available</p>
             </div>
           </div>

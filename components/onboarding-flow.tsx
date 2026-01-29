@@ -18,7 +18,7 @@ export function OnboardingFlow() {
     {
       icon: Zap,
       title: "Automated procurement",
-      description: "Set up automatic purchasing rules and let Loop handle recurring orders for you.",
+      description: "Set up automatic purchasing rules and let Abasti handle recurring orders for you.",
       color: "text-primary",
     },
     {

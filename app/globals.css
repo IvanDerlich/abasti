@@ -3,7 +3,7 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* Loop B2B Marketplace Theme with #491CFF primary color */
+/* Abasti B2B Marketplace Theme with #491CFF primary color */
 :root {
   --background: oklch(1 0 0);
   --foreground: oklch(0.15 0 0);

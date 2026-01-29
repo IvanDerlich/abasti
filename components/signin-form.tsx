@@ -22,7 +22,7 @@ export function SignInForm() {
               <span className="text-2xl font-bold text-primary-foreground">L</span>
             </div>
             <h1 className="text-3xl font-bold">Welcome back</h1>
-            <p className="text-muted-foreground">Sign in to your Loop account</p>
+            <p className="text-muted-foreground">Sign in to your Abasti account</p>
           </div>
 
           <Card>

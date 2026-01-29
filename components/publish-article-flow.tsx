@@ -505,7 +505,7 @@ export function PublishArticleFlow() {
                   <Eye className="w-5 h-5 text-primary mt-0.5" />
                   <div>
                     <p className="font-medium">Public Marketplace</p>
-                    <p className="text-sm text-muted-foreground">Visible to all Loop users</p>
+                    <p className="text-sm text-muted-foreground">Visible to all Abasti users</p>
                   </div>
                 </div>
               </Card>
@@ -855,7 +855,7 @@ export function PublishArticleFlow() {
           </div>
 
           <h2 className="text-2xl font-bold mb-3">Article Published!</h2>
-          <p className="text-muted-foreground mb-8">Your {articleType} is now live and visible to buyers on Loop.</p>
+          <p className="text-muted-foreground mb-8">Your {articleType} is now live and visible to buyers on Abasti.</p>
 
           <div className="space-y-3">
             <Link href="/product/1">

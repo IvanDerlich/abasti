@@ -8,7 +8,7 @@ import "./globals.css"
 const _geist = Geist({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Loop - B2B Marketplace",
+  title: "Abasti - B2B Marketplace",
   description: "Buy and sell B2B without friction. Automated procurement, private catalogs, and seamless transactions.",
   generator: "v0.app",
   icons: {

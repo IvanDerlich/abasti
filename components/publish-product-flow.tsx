@@ -842,7 +842,7 @@ export function PublishProductFlow() {
                       </Badge>
                     </p>
                     <p className="text-sm text-muted-foreground mt-1">
-                      Visible para todos los usuarios de Loop. Máximo alcance.
+                      Visible para todos los usuarios de Abasti. Máximo alcance.
                     </p>
                   </div>
                 </div>
@@ -891,7 +891,7 @@ export function PublishProductFlow() {
                 <div>
                   <p className="font-medium text-sm text-green-900 dark:text-green-100 mb-1">Máxima Visibilidad</p>
                   <p className="text-xs text-green-700 dark:text-green-200">
-                    Tu producto aparecerá en el marketplace, búsquedas y recomendaciones personalizadas de Loop.
+                    Tu producto aparecerá en el marketplace, búsquedas y recomendaciones personalizadas de Abasti.
                   </p>
                 </div>
               </div>

@@ -151,13 +151,13 @@ export function ProductDetail({ productId }: ProductDetailProps) {
               </div>
               <div className="flex-1">
                 <h3 className="font-semibold mb-1">Have questions?</h3>
-                <p className="text-sm text-muted-foreground mb-3">Ask Loop AI for instant answers about this product</p>
+                <p className="text-sm text-muted-foreground mb-3">Ask Abasti AI for instant answers about this product</p>
                 <Button
                   variant="outline"
                   size="sm"
                   onClick={() => (window.location.href = `/chat?product=${productId}`)}
                 >
-                  Ask Loop AI
+                  Ask Abasti AI
                 </Button>
               </div>
             </div>
