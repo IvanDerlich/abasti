@@ -5,3 +5,5 @@ docker create -it --name sandbox3000 -p 3000:3000 -v "$(pwd)":/work node:20-bull
 docker start sandbox3000
 docker exec -it -w /work sandbox3000 bash -lc "./scripts/setup-container.sh && exec bash"
 
+# Comment
+
