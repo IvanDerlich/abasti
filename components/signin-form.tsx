@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -18,8 +19,15 @@ export function SignInForm() {
       <div className="flex items-center justify-center px-6 py-12">
         <div className="w-full max-w-md space-y-8">
           <div className="text-center space-y-2">
-            <div className="w-16 h-16 rounded-full bg-primary mx-auto flex items-center justify-center mb-4">
-              <span className="text-2xl font-bold text-primary-foreground">L</span>
+            <div className="flex justify-center mb-4">
+              <Image
+                src="/abasti-logo.png"
+                alt="Abasti"
+                width={140}
+                height={40}
+                className="h-12 w-auto object-contain"
+                priority
+              />
             </div>
             <h1 className="text-3xl font-bold">Welcome back</h1>
             <p className="text-muted-foreground">Sign in to your Abasti account</p>

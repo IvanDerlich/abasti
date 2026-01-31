@@ -4,6 +4,7 @@ import type React from "react"
 
 import { usePathname } from "next/navigation"
 import Link from "next/link"
+import Image from "next/image"
 import { Home, FolderOpen, ShoppingCart, User, Plus } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -36,10 +37,14 @@ export function AppShell({ children }: AppShellProps) {
         {/* Logo */}
         <div className="flex items-center h-16 px-6 border-b border-sidebar-border">
           <Link href="/marketplace" className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-lg">L</span>
-            </div>
-            <span className="text-xl font-bold text-sidebar-foreground">Abasti</span>
+            <Image
+              src="/abasti-logo.png"
+              alt="Abasti"
+              width={120}
+              height={32}
+              className="h-8 w-auto object-contain"
+              priority
+            />
           </Link>
         </div>
 
