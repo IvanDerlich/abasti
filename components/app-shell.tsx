@@ -14,10 +14,10 @@ interface AppShellProps {
 }
 
 const navItems = [
-  { href: "/marketplace", label: "Home", icon: Home },
-  { href: "/catalogs", label: "Catalogs", icon: FolderOpen },
-  { href: "/dashboard", label: "Orders", icon: ShoppingCart },
-  { href: "/company/my-profile", label: "Profile", icon: User },
+  { href: "/marketplace", label: "Inicio", icon: Home },
+  { href: "/catalogs", label: "Catálogos", icon: FolderOpen },
+  { href: "/dashboard", label: "Pedidos", icon: ShoppingCart },
+  { href: "/company/my-profile", label: "Perfil", icon: User },
 ]
 
 export function AppShell({ children }: AppShellProps) {
@@ -77,7 +77,7 @@ export function AppShell({ children }: AppShellProps) {
           <Button asChild className="w-full">
             <Link href="/publish-product">
               <Plus className="h-4 w-4 mr-2" />
-              Publish Product
+              Publicar producto
             </Link>
           </Button>
         </div>

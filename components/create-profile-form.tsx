@@ -24,9 +24,9 @@ export function CreateProfileForm() {
           <ArrowLeft className="h-5 w-5" />
         </Button>
         <div className="flex-1">
-          <h1 className="text-lg font-semibold">Create Company Profile</h1>
+          <h1 className="text-lg font-semibold">Crear perfil de empresa</h1>
           <p className="text-sm text-muted-foreground">
-            Step {step} of {totalSteps}
+            Paso {step} de {totalSteps}
           </p>
         </div>
       </div>
@@ -45,24 +45,24 @@ export function CreateProfileForm() {
             <>
               <div className="space-y-4">
                 <div className="space-y-2">
-                  <Label htmlFor="company-name">Company Name *</Label>
-                  <Input id="company-name" placeholder="Enter company name" className="h-12" />
+                  <Label htmlFor="company-name">Nombre de la empresa *</Label>
+                  <Input id="company-name" placeholder="Introduce el nombre de la empresa" className="h-12" />
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="industry">Industry *</Label>
+                  <Label htmlFor="industry">Sector *</Label>
                   <Select>
                     <SelectTrigger id="industry" className="h-12">
-                      <SelectValue placeholder="Select industry" />
+                      <SelectValue placeholder="Selecciona el sector" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="manufacturing">Manufacturing</SelectItem>
-                      <SelectItem value="technology">Technology</SelectItem>
+                      <SelectItem value="manufacturing">Manufactura</SelectItem>
+                      <SelectItem value="technology">Tecnología</SelectItem>
                       <SelectItem value="retail">Retail</SelectItem>
-                      <SelectItem value="healthcare">Healthcare</SelectItem>
-                      <SelectItem value="finance">Finance</SelectItem>
-                      <SelectItem value="construction">Construction</SelectItem>
-                      <SelectItem value="other">Other</SelectItem>
+                      <SelectItem value="healthcare">Sanidad</SelectItem>
+                      <SelectItem value="finance">Finanzas</SelectItem>
+                      <SelectItem value="construction">Construcción</SelectItem>
+                      <SelectItem value="other">Otro</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -73,8 +73,8 @@ export function CreateProfileForm() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="location">Location *</Label>
-                  <Input id="location" placeholder="City, Country" className="h-12" />
+                  <Label htmlFor="location">Ubicación *</Label>
+                  <Input id="location" placeholder="Ciudad, País" className="h-12" />
                 </div>
               </div>
             </>
@@ -89,12 +89,12 @@ export function CreateProfileForm() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="phone">Phone Number *</Label>
-                  <Input id="phone" type="tel" placeholder="+1 (555) 000-0000" className="h-12" />
+                  <Label htmlFor="phone">Teléfono *</Label>
+                  <Input id="phone" type="tel" placeholder="+34 600 000 000" className="h-12" />
                 </div>
 
                 <div className="space-y-2">
-                  <Label>Company Logo</Label>
+                  <Label>Logo de la empresa</Label>
                   <Card className="border-2 border-dashed">
                     <CardContent className="p-8">
                       <div className="flex flex-col items-center text-center space-y-4">
@@ -102,11 +102,11 @@ export function CreateProfileForm() {
                           <Upload className="h-8 w-8 text-muted-foreground" />
                         </div>
                         <div>
-                          <p className="font-medium">Upload company logo</p>
-                          <p className="text-sm text-muted-foreground">PNG, JPG up to 5MB</p>
+                          <p className="font-medium">Subir logo de la empresa</p>
+                          <p className="text-sm text-muted-foreground">PNG, JPG hasta 5 MB</p>
                         </div>
                         <Button type="button" variant="outline">
-                          Choose File
+                          Elegir archivo
                         </Button>
                       </div>
                     </CardContent>
@@ -120,7 +120,7 @@ export function CreateProfileForm() {
             <>
               <div className="space-y-6">
                 <div className="space-y-4">
-                  <Label>Company Type *</Label>
+                  <Label>Tipo de empresa *</Label>
                   <RadioGroup value={companyType} onValueChange={setCompanyType}>
                     <Card className={companyType === "buyer" ? "border-primary" : ""}>
                       <CardContent className="p-4">
@@ -128,10 +128,10 @@ export function CreateProfileForm() {
                           <RadioGroupItem value="buyer" id="buyer" className="mt-1" />
                           <div className="flex-1">
                             <Label htmlFor="buyer" className="font-medium cursor-pointer">
-                              Buyer
+                              Comprador
                             </Label>
                             <p className="text-sm text-muted-foreground">
-                              Purchase products and services from other companies
+                              Comprar productos y servicios a otras empresas
                             </p>
                           </div>
                         </div>
@@ -144,10 +144,10 @@ export function CreateProfileForm() {
                           <RadioGroupItem value="seller" id="seller" className="mt-1" />
                           <div className="flex-1">
                             <Label htmlFor="seller" className="font-medium cursor-pointer">
-                              Seller
+                              Vendedor
                             </Label>
                             <p className="text-sm text-muted-foreground">
-                              Sell products and services to other companies
+                              Vender productos y servicios a otras empresas
                             </p>
                           </div>
                         </div>
@@ -160,9 +160,9 @@ export function CreateProfileForm() {
                           <RadioGroupItem value="both" id="both" className="mt-1" />
                           <div className="flex-1">
                             <Label htmlFor="both" className="font-medium cursor-pointer">
-                              Both
+                              Ambos
                             </Label>
-                            <p className="text-sm text-muted-foreground">Buy and sell on the marketplace</p>
+                            <p className="text-sm text-muted-foreground">Comprar y vender en el marketplace</p>
                           </div>
                         </div>
                       </CardContent>
@@ -176,10 +176,10 @@ export function CreateProfileForm() {
                       <Checkbox id="terms" />
                       <div className="space-y-1">
                         <Label htmlFor="terms" className="text-sm font-normal cursor-pointer">
-                          I agree to the Terms of Service and Privacy Policy
+                          Acepto los Términos de Servicio y la Política de Privacidad
                         </Label>
                         <p className="text-xs text-muted-foreground">
-                          By creating an account, you agree to our terms and conditions
+                          Al crear una cuenta, aceptas nuestros términos y condiciones
                         </p>
                       </div>
                     </div>
@@ -198,7 +198,7 @@ export function CreateProfileForm() {
           className="w-full text-base font-medium h-14"
           onClick={() => (step < totalSteps ? setStep(step + 1) : (window.location.href = "/marketplace"))}
         >
-          {step < totalSteps ? "Continue" : "Create Profile"}
+          {step < totalSteps ? "Continuar" : "Crear perfil"}
         </Button>
       </div>
     </div>

@@ -90,15 +90,15 @@ export function PublishArticleFlow() {
                 <ChevronLeft className="w-5 h-5" />
               </Button>
             </Link>
-            <h1 className="text-lg font-semibold">Create Article</h1>
+            <h1 className="text-lg font-semibold">Crear artículo</h1>
             <div className="w-10" />
           </div>
         </div>
 
         <div className="px-4 py-8">
           <div className="text-center mb-8">
-            <h2 className="text-2xl font-bold mb-2">What are you publishing?</h2>
-            <p className="text-muted-foreground">Choose the type of article to create</p>
+            <h2 className="text-2xl font-bold mb-2">¿Qué vas a publicar?</h2>
+            <p className="text-muted-foreground">Elige el tipo de artículo a crear</p>
           </div>
 
           <div className="space-y-4 max-w-md mx-auto">
@@ -114,8 +114,8 @@ export function PublishArticleFlow() {
                   <Package className="w-8 h-8 text-primary" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="font-semibold text-lg mb-1">Create Product</h3>
-                  <p className="text-sm text-muted-foreground">Physical goods, materials, or inventory items</p>
+                  <h3 className="font-semibold text-lg mb-1">Crear producto</h3>
+                  <p className="text-sm text-muted-foreground">Bienes físicos, materiales o artículos de inventario</p>
                 </div>
               </div>
             </Card>
@@ -132,8 +132,8 @@ export function PublishArticleFlow() {
                   <Wrench className="w-8 h-8 text-primary" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="font-semibold text-lg mb-1">Create Service</h3>
-                  <p className="text-sm text-muted-foreground">Professional services, consulting, or labor</p>
+                  <h3 className="font-semibold text-lg mb-1">Crear servicio</h3>
+                  <p className="text-sm text-muted-foreground">Servicios profesionales, consultoría o mano de obra</p>
                 </div>
               </div>
             </Card>
@@ -152,17 +152,17 @@ export function PublishArticleFlow() {
             <Button variant="ghost" size="icon" onClick={prevStep}>
               <ChevronLeft className="w-5 h-5" />
             </Button>
-            <h1 className="text-lg font-semibold">Basic Information</h1>
+            <h1 className="text-lg font-semibold">Información básica</h1>
             <span className="text-sm text-muted-foreground">1/8</span>
           </div>
         </div>
 
         <div className="px-4 py-6 space-y-6">
           <div>
-            <Label htmlFor="name">{articleType === "product" ? "Product" : "Service"} Name *</Label>
+            <Label htmlFor="name">Nombre del {articleType === "product" ? "producto" : "servicio"} *</Label>
             <Input
               id="name"
-              placeholder={`Enter ${articleType} name`}
+              placeholder={articleType === "product" ? "Introduce el nombre del producto" : "Introduce el nombre del servicio"}
               value={formData.name}
               onChange={(e) => updateFormData("name", e.target.value)}
               className="mt-2"
@@ -170,17 +170,17 @@ export function PublishArticleFlow() {
           </div>
 
           <div>
-            <Label htmlFor="category">Category *</Label>
+            <Label htmlFor="category">Categoría *</Label>
             <Select value={formData.category} onValueChange={(val) => updateFormData("category", val)}>
               <SelectTrigger id="category" className="mt-2">
-                <SelectValue placeholder="Select category" />
+                <SelectValue placeholder="Selecciona categoría" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="construction">Construction Materials</SelectItem>
-                <SelectItem value="electronics">Electronics & Tech</SelectItem>
-                <SelectItem value="industrial">Industrial Equipment</SelectItem>
-                <SelectItem value="textiles">Textiles & Fabrics</SelectItem>
-                <SelectItem value="chemicals">Chemicals & Raw Materials</SelectItem>
+                <SelectItem value="construction">Materiales de construcción</SelectItem>
+                <SelectItem value="electronics">Electrónica y tecnología</SelectItem>
+                <SelectItem value="industrial">Equipamiento industrial</SelectItem>
+                <SelectItem value="textiles">Textiles y telas</SelectItem>
+                <SelectItem value="chemicals">Químicos y materias primas</SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -189,7 +189,7 @@ export function PublishArticleFlow() {
             <Label htmlFor="subcategory">Subcategory</Label>
             <Select value={formData.subcategory} onValueChange={(val) => updateFormData("subcategory", val)}>
               <SelectTrigger id="subcategory" className="mt-2">
-                <SelectValue placeholder="Select subcategory" />
+                <SelectValue placeholder="Selecciona subcategoría" />
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="steel">Steel & Metal</SelectItem>
@@ -203,7 +203,7 @@ export function PublishArticleFlow() {
             <Label htmlFor="description">Description *</Label>
             <Textarea
               id="description"
-              placeholder="Describe your product or service..."
+              placeholder="Describe tu producto o servicio..."
               value={formData.description}
               onChange={(e) => updateFormData("description", e.target.value)}
               rows={5}
@@ -223,7 +223,7 @@ export function PublishArticleFlow() {
             </div>
             <div className="flex gap-2">
               <Input
-                placeholder="Add a tag"
+                placeholder="Añadir etiqueta"
                 onKeyDown={(e) => {
                   if (e.key === "Enter") {
                     addTag(e.currentTarget.value)
@@ -259,7 +259,7 @@ export function PublishArticleFlow() {
         <div className="px-4 py-6 space-y-6">
           <div>
             <Label>Images *</Label>
-            <p className="text-sm text-muted-foreground mb-4">Add up to 10 images</p>
+            <p className="text-sm text-muted-foreground mb-4">Añade hasta 10 imágenes</p>
 
             <Card className="p-8 border-dashed cursor-pointer hover:bg-accent/50 transition-colors">
               <div className="text-center">
@@ -300,7 +300,7 @@ export function PublishArticleFlow() {
 
           <div>
             <Label>Video (Optional)</Label>
-            <p className="text-sm text-muted-foreground mb-4">Add a product demo or showcase video</p>
+            <p className="text-sm text-muted-foreground mb-4">Añade un vídeo de demostración o presentación del producto</p>
 
             <Card className="p-6 border-dashed cursor-pointer hover:bg-accent/50 transition-colors">
               <div className="flex items-center gap-3">
@@ -420,7 +420,7 @@ export function PublishArticleFlow() {
                 <Input
                   id="stock"
                   type="number"
-                  placeholder="Available units"
+                  placeholder="Unidades disponibles"
                   value={formData.stock}
                   onChange={(e) => updateFormData("stock", e.target.value)}
                   className="mt-2"
@@ -448,7 +448,7 @@ export function PublishArticleFlow() {
                 </Card>
                 <Button variant="outline" size="sm" className="w-full bg-transparent">
                   <Upload className="w-4 h-4 mr-2" />
-                  Add Tier
+                  Añadir nivel
                 </Button>
               </div>
             </div>
@@ -471,17 +471,17 @@ export function PublishArticleFlow() {
             <Button variant="ghost" size="icon" onClick={prevStep}>
               <ChevronLeft className="w-5 h-5" />
             </Button>
-            <h1 className="text-lg font-semibold">Catalog & Visibility</h1>
+            <h1 className="text-lg font-semibold">Catálogo y visibilidad</h1>
             <span className="text-sm text-muted-foreground">4/8</span>
           </div>
         </div>
 
         <div className="px-4 py-6 space-y-6">
           <div>
-            <Label htmlFor="catalog">Add to Catalog (Optional)</Label>
+            <Label htmlFor="catalog">Añadir al catálogo (opcional)</Label>
             <Select value={formData.catalogId} onValueChange={(val) => updateFormData("catalogId", val)}>
               <SelectTrigger id="catalog" className="mt-2">
-                <SelectValue placeholder="Select catalog" />
+                <SelectValue placeholder="Selecciona catálogo" />
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="none">None</SelectItem>
@@ -534,7 +534,7 @@ export function PublishArticleFlow() {
                 <div className="flex items-start gap-3">
                   <Package className="w-5 h-5 text-primary mt-0.5" />
                   <div>
-                    <p className="font-medium">Catalog Only</p>
+                    <p className="font-medium">Solo en catálogo</p>
                     <p className="text-sm text-muted-foreground">Only visible in selected catalog</p>
                   </div>
                 </div>
@@ -558,7 +558,7 @@ export function PublishArticleFlow() {
             <Label htmlFor="region">Region Availability</Label>
             <Select value={formData.region} onValueChange={(val) => updateFormData("region", val)}>
               <SelectTrigger id="region" className="mt-2">
-                <SelectValue placeholder="Select regions" />
+                <SelectValue placeholder="Selecciona regiones" />
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="global">Global</SelectItem>
@@ -650,7 +650,7 @@ export function PublishArticleFlow() {
                 <Label htmlFor="deliveryPrefs">Delivery Preferences</Label>
                 <Textarea
                   id="deliveryPrefs"
-                  placeholder="Special delivery instructions or preferences..."
+                  placeholder="Instrucciones o preferencias de entrega..."
                   value={formData.automationRules.deliveryPrefs}
                   onChange={(e) =>
                     updateFormData("automationRules", { ...formData.automationRules, deliveryPrefs: e.target.value })
@@ -779,9 +779,9 @@ export function PublishArticleFlow() {
               <Badge variant="secondary" className="mb-2">
                 {formData.category || "Category"}
               </Badge>
-              <h3 className="font-bold text-lg mb-2">{formData.name || "Product Name"}</h3>
+              <h3 className="font-bold text-lg mb-2">{formData.name || "Nombre del producto"}</h3>
               <p className="text-sm text-muted-foreground mb-4">
-                {formData.description || "Product description will appear here"}
+                {formData.description || "La descripción del producto aparecerá aquí"}
               </p>
               <div className="flex items-center justify-between">
                 <p className="text-lg font-bold text-primary">
@@ -861,7 +861,7 @@ export function PublishArticleFlow() {
             <Link href="/product/1">
               <Button size="lg" className="w-full">
                 <Eye className="w-4 h-4 mr-2" />
-                View Article
+                Ver artículo
               </Button>
             </Link>
             <Button
@@ -900,7 +900,7 @@ export function PublishArticleFlow() {
               }}
             >
               <Plus className="w-4 h-4 mr-2" />
-              Create Another Article
+              Crear otro artículo
             </Button>
             <Button size="lg" variant="ghost" className="w-full">
               <Share2 className="w-4 h-4 mr-2" />
@@ -910,7 +910,7 @@ export function PublishArticleFlow() {
 
           <Link href="/marketplace">
             <Button variant="link" className="mt-6">
-              Back to Marketplace
+              Volver al marketplace
             </Button>
           </Link>
         </div>

@@ -8,8 +8,8 @@ import "./globals.css"
 const _geist = Geist({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Abasti - B2B Marketplace",
-  description: "Buy and sell B2B without friction. Automated procurement, private catalogs, and seamless transactions.",
+  title: "Abasti - Marketplace B2B",
+  description: "Compra y vende B2B sin fricciones. Compras automatizadas, catálogos privados y transacciones fluidas.",
   generator: "v0.app",
   icons: {
     icon: [
@@ -36,7 +36,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="es">
       <body className={`font-sans antialiased`}>
         <AppShell>{children}</AppShell>
         <Analytics />

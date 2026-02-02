@@ -21,78 +21,78 @@ import {
 import { cn } from "@/lib/utils";
 
 const categories = [
-  "All",
-  "Manufacturing",
-  "Technology",
-  "Office Supplies",
-  "Raw Materials",
-  "Services",
-  "Equipment",
+  "Todos",
+  "Manufactura",
+  "Tecnología",
+  "Suministros de oficina",
+  "Materias primas",
+  "Servicios",
+  "Equipamiento",
 ];
 
 const products = [
   {
     id: 1,
-    title: "Industrial Steel Beams - Grade A",
+    title: "Vigas de acero industrial - Grado A",
     company: "BuildCorp Industries",
-    price: "$2,450/ton",
+    price: "2.450 €/ton",
     hasVideo: true,
     image: "/industrial-steel-beams.jpg",
-    category: "Manufacturing",
+    category: "Manufactura",
   },
   {
     id: 2,
-    title: "Cloud Server Hosting Package",
+    title: "Paquete de hosting en la nube",
     company: "TechFlow Solutions",
-    price: "Request Quote",
+    price: "Solicitar presupuesto",
     hasVideo: false,
     image: "/cloud-servers-datacenter.jpg",
-    category: "Technology",
+    category: "Tecnología",
   },
   {
     id: 3,
-    title: "Office Furniture Bulk Set - 50 Units",
+    title: "Lote de muebles de oficina - 50 unidades",
     company: "WorkSpace Pro",
-    price: "$12,500",
+    price: "12.500 €",
     hasVideo: true,
     image: "/modern-office-furniture.png",
-    category: "Office Supplies",
+    category: "Suministros de oficina",
   },
   {
     id: 4,
-    title: "Organic Cotton Fabric Rolls",
+    title: "Rollos de tela de algodón orgánico",
     company: "TextileMart Global",
-    price: "$8.50/yard",
+    price: "8,50 €/m",
     hasVideo: false,
     image: "/cotton-fabric-rolls.jpg",
-    category: "Raw Materials",
+    category: "Materias primas",
   },
   {
     id: 5,
-    title: "Logistics & Freight Services",
+    title: "Servicios de logística y transporte",
     company: "QuickShip Logistics",
-    price: "Request Quote",
+    price: "Solicitar presupuesto",
     hasVideo: true,
     image: "/logistics-freight-truck.jpg",
-    category: "Services",
+    category: "Servicios",
   },
   {
     id: 6,
-    title: "CNC Machining Equipment",
+    title: "Equipo de mecanizado CNC",
     company: "PrecisionTech Manufacturing",
-    price: "$45,000",
+    price: "45.000 €",
     hasVideo: true,
     image: "/cnc-machine-industrial.jpg",
-    category: "Equipment",
+    category: "Equipamiento",
   },
 ];
 
 export function MarketplaceView() {
-  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [selectedCategory, setSelectedCategory] = useState("Todos");
   const [activeTab, setActiveTab] = useState("home");
 
   const filteredProducts =
-    selectedCategory === "All"
+    selectedCategory === "Todos"
       ? products
       : products.filter((p) => p.category === selectedCategory);
 
@@ -112,7 +112,7 @@ export function MarketplaceView() {
           <div className="relative">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
             <Input
-              placeholder="Search products, services, companies..."
+              placeholder="Buscar productos, servicios, empresas..."
               className="pl-10 h-12 bg-muted/50"
             />
           </div>
@@ -155,7 +155,7 @@ export function MarketplaceView() {
               {product.hasVideo && (
                 <Badge className="absolute top-3 right-3 bg-primary">
                   <Video className="h-3 w-3 mr-1" />
-                  Video
+                  Vídeo
                 </Badge>
               )}
             </div>
@@ -226,7 +226,7 @@ export function MarketplaceView() {
             onClick={() => setActiveTab("home")}
           >
             <Home className="h-5 w-5" />
-            <span className="text-xs">Home</span>
+            <span className="text-xs">Inicio</span>
           </Button>
           <Button
             variant="ghost"
@@ -241,7 +241,7 @@ export function MarketplaceView() {
             }}
           >
             <Grid3x3 className="h-5 w-5" />
-            <span className="text-xs">Catalogs</span>
+            <span className="text-xs">Catálogos</span>
           </Button>
           <Button
             variant="ghost"
@@ -256,7 +256,7 @@ export function MarketplaceView() {
             }}
           >
             <ShoppingBag className="h-5 w-5" />
-            <span className="text-xs">Orders</span>
+            <span className="text-xs">Pedidos</span>
           </Button>
           <Button
             variant="ghost"
@@ -271,7 +271,7 @@ export function MarketplaceView() {
             }}
           >
             <User className="h-5 w-5" />
-            <span className="text-xs">Profile</span>
+            <span className="text-xs">Perfil</span>
           </Button>
         </div>
       </div>

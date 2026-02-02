@@ -37,7 +37,7 @@ export function CreateCatalogForm() {
         <Button variant="ghost" size="icon" onClick={() => window.history.back()}>
           <ArrowLeft className="h-5 w-5" />
         </Button>
-        <h1 className="text-lg font-semibold">Create Catalog</h1>
+        <h1 className="text-lg font-semibold">Crear catálogo</h1>
       </div>
 
       <div className="p-4 max-w-2xl mx-auto space-y-6">
@@ -46,8 +46,8 @@ export function CreateCatalogForm() {
           <Card>
             <CardContent className="p-4 space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="catalog-name">Catalog Name *</Label>
-                <Input id="catalog-name" placeholder="e.g., Manufacturing Essentials" className="h-12" />
+                <Label htmlFor="catalog-name">Nombre del catálogo *</Label>
+                <Input id="catalog-name" placeholder="ej.: Esenciales de manufactura" className="h-12" />
               </div>
 
               <div className="space-y-2">
@@ -60,7 +60,7 @@ export function CreateCatalogForm() {
           {/* Visibility Settings */}
           <Card>
             <CardContent className="p-4 space-y-4">
-              <Label>Visibility *</Label>
+              <Label>Visibilidad *</Label>
               <RadioGroup value={visibility} onValueChange={setVisibility}>
                 <Card className={visibility === "private" ? "border-primary" : ""}>
                   <CardContent className="p-3">
@@ -70,10 +70,10 @@ export function CreateCatalogForm() {
                         <div className="flex items-center gap-2 mb-1">
                           <Lock className="h-4 w-4" />
                           <Label htmlFor="private" className="font-medium cursor-pointer">
-                            Private
+                            Privado
                           </Label>
                         </div>
-                        <p className="text-sm text-muted-foreground">Only you can see this catalog</p>
+                        <p className="text-sm text-muted-foreground">Solo tú puedes ver este catálogo</p>
                       </div>
                     </div>
                   </CardContent>
@@ -104,10 +104,10 @@ export function CreateCatalogForm() {
                         <div className="flex items-center gap-2 mb-1">
                           <Globe className="h-4 w-4" />
                           <Label htmlFor="public" className="font-medium cursor-pointer">
-                            Public
+                            Público
                           </Label>
                         </div>
-                        <p className="text-sm text-muted-foreground">Anyone can view this catalog</p>
+                        <p className="text-sm text-muted-foreground">Cualquiera puede ver este catálogo</p>
                       </div>
                     </div>
                   </CardContent>
@@ -120,13 +120,13 @@ export function CreateCatalogForm() {
           <Card>
             <CardContent className="p-4 space-y-4">
               <div>
-                <Label>Minimum Order Quantity (Optional)</Label>
-                <Input type="number" placeholder="e.g., 100" className="h-12 mt-2" />
+                <Label>Cantidad mínima de pedido (opcional)</Label>
+                <Input type="number" placeholder="ej.: 100" className="h-12 mt-2" />
               </div>
 
               <div>
-                <Label>Bulk Discount % (Optional)</Label>
-                <Input type="number" placeholder="e.g., 15" className="h-12 mt-2" />
+                <Label>Descuento por volumen % (opcional)</Label>
+                <Input type="number" placeholder="ej.: 15" className="h-12 mt-2" />
               </div>
             </CardContent>
           </Card>
@@ -135,7 +135,7 @@ export function CreateCatalogForm() {
           <Card>
             <CardContent className="p-4 space-y-4">
               <div className="flex items-center justify-between">
-                <Label>Products ({selectedProducts.length})</Label>
+                <Label>Productos ({selectedProducts.length})</Label>
                 <Button
                   type="button"
                   variant="outline"
@@ -143,7 +143,7 @@ export function CreateCatalogForm() {
                   onClick={() => setShowProductSearch(!showProductSearch)}
                 >
                   <Plus className="h-4 w-4 mr-2" />
-                  Add Products
+                  Añadir productos
                 </Button>
               </div>
 
@@ -151,7 +151,7 @@ export function CreateCatalogForm() {
                 <div className="space-y-3">
                   <div className="relative">
                     <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                    <Input placeholder="Search products..." className="pl-10" />
+                    <Input placeholder="Buscar productos..." className="pl-10" />
                   </div>
 
                   <div className="space-y-2 max-h-64 overflow-y-auto">
@@ -174,7 +174,7 @@ export function CreateCatalogForm() {
                               <p className="font-medium text-sm line-clamp-1">{product.name}</p>
                               <p className="text-xs text-muted-foreground">{product.price}</p>
                             </div>
-                            {selectedProducts.includes(product.id) && <Badge className="bg-primary">Added</Badge>}
+                            {selectedProducts.includes(product.id) && <Badge className="bg-primary">Añadido</Badge>}
                           </div>
                         </CardContent>
                       </Card>
@@ -185,7 +185,7 @@ export function CreateCatalogForm() {
 
               {selectedProducts.length > 0 && (
                 <div className="space-y-2">
-                  <Label className="text-sm text-muted-foreground">Selected Products</Label>
+                  <Label className="text-sm text-muted-foreground">Productos seleccionados</Label>
                   <div className="flex flex-wrap gap-2">
                     {selectedProducts.map((productId) => {
                       const product = availableProducts.find((p) => p.id === productId)
@@ -215,7 +215,7 @@ export function CreateCatalogForm() {
       {/* Fixed Bottom Button */}
       <div className="fixed bottom-0 left-0 right-0 p-4 bg-background border-t border-border">
         <Button size="lg" className="w-full h-14" onClick={() => (window.location.href = "/catalogs")}>
-          Create Catalog
+          Crear catálogo
         </Button>
       </div>
     </div>

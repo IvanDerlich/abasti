@@ -29,25 +29,25 @@ export function SignInForm() {
                 priority
               />
             </div>
-            <h1 className="text-3xl font-bold">Welcome back</h1>
-            <p className="text-muted-foreground">Sign in to your Abasti account</p>
+            <h1 className="text-3xl font-bold">Bienvenido de nuevo</h1>
+            <p className="text-muted-foreground">Inicia sesión en tu cuenta de Abasti</p>
           </div>
 
           <Card>
             <CardContent className="p-6 space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="email">Email</Label>
+                <Label htmlFor="email">Correo electrónico</Label>
                 <div className="relative">
                   <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                  <Input id="email" type="email" placeholder="you@company.com" className="pl-10 h-12" />
+                  <Input id="email" type="email" placeholder="tu@empresa.com" className="pl-10 h-12" />
                 </div>
               </div>
 
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
-                  <Label htmlFor="password">Password</Label>
+                  <Label htmlFor="password">Contraseña</Label>
                   <Button variant="link" size="sm" className="h-auto p-0 text-xs">
-                    Forgot password?
+                    ¿Olvidaste tu contraseña?
                   </Button>
                 </div>
                 <div className="relative">
@@ -57,20 +57,20 @@ export function SignInForm() {
               </div>
 
               <Button size="lg" className="w-full h-12" onClick={() => (window.location.href = "/marketplace")}>
-                Sign In
+                Iniciar sesión
               </Button>
             </CardContent>
           </Card>
 
           <div className="text-center">
             <p className="text-sm text-muted-foreground">
-              Don't have an account?{" "}
+              ¿No tienes cuenta?{" "}
               <Button
                 variant="link"
                 className="p-0 h-auto font-semibold"
                 onClick={() => (window.location.href = "/create-profile")}
               >
-                Create one
+                Crear una
               </Button>
             </p>
           </div>

@@ -20,20 +20,20 @@ const catalogs = [
   },
   {
     id: 2,
-    name: "Office Supplies Q1 2025",
+    name: "Suministros de oficina Q1 2025",
     visibility: "invite-only",
     productCount: 156,
     sharedWith: 3,
-    lastUpdated: "1 week ago",
+    lastUpdated: "Hace 1 semana",
     image: "/placeholder.svg?key=fuvgr",
   },
   {
     id: 3,
-    name: "Public Equipment Catalog",
+    name: "Catálogo público de equipamiento",
     visibility: "public",
     productCount: 89,
     sharedWith: 245,
-    lastUpdated: "3 days ago",
+    lastUpdated: "Hace 3 días",
     image: "/placeholder.svg?key=0y61x",
   },
 ]
@@ -49,7 +49,7 @@ export function CatalogsView() {
           <Button variant="ghost" size="icon" onClick={() => window.history.back()}>
             <ArrowLeft className="h-5 w-5" />
           </Button>
-          <h1 className="text-2xl font-bold flex-1">My Catalogs</h1>
+          <h1 className="text-2xl font-bold flex-1">Mis catálogos</h1>
           <Button size="icon" onClick={() => (window.location.href = "/catalogs/create")}>
             <Plus className="h-5 w-5" />
           </Button>
@@ -59,7 +59,7 @@ export function CatalogsView() {
         <div className="relative">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
           <Input
-            placeholder="Search catalogs..."
+            placeholder="Buscar catálogos..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="pl-10 h-12 bg-muted/50"
@@ -72,8 +72,8 @@ export function CatalogsView() {
         <Card className="bg-primary/5 border-primary/20">
           <CardContent className="p-4">
             <p className="text-sm leading-relaxed">
-              Create private catalogs to organize products for specific buyers. Set custom pricing, minimum orders, and
-              share via invite links.
+              Crea catálogos privados para organizar productos para compradores concretos. Define precios, pedidos mínimos y
+              comparte mediante enlaces de invitación.
             </p>
           </CardContent>
         </Card>
@@ -97,7 +97,7 @@ export function CatalogsView() {
                 <div className="flex items-start justify-between gap-2 mb-2">
                   <div className="flex-1">
                     <h3 className="font-semibold leading-tight line-clamp-1">{catalog.name}</h3>
-                    <p className="text-sm text-muted-foreground mt-1">{catalog.productCount} products</p>
+                    <p className="text-sm text-muted-foreground mt-1">{catalog.productCount} productos</p>
                   </div>
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild onClick={(e) => e.stopPropagation()}>
@@ -106,10 +106,10 @@ export function CatalogsView() {
                       </Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end">
-                      <DropdownMenuItem>Edit Catalog</DropdownMenuItem>
-                      <DropdownMenuItem>Share Link</DropdownMenuItem>
-                      <DropdownMenuItem>Manage Products</DropdownMenuItem>
-                      <DropdownMenuItem className="text-destructive">Delete</DropdownMenuItem>
+                      <DropdownMenuItem>Editar catálogo</DropdownMenuItem>
+                      <DropdownMenuItem>Compartir enlace</DropdownMenuItem>
+                      <DropdownMenuItem>Gestionar productos</DropdownMenuItem>
+                      <DropdownMenuItem className="text-destructive">Eliminar</DropdownMenuItem>
                     </DropdownMenuContent>
                   </DropdownMenu>
                 </div>
@@ -120,18 +120,18 @@ export function CatalogsView() {
                     {catalog.visibility === "public" && <Globe className="h-3 w-3 mr-1" />}
                     {catalog.visibility === "invite-only" && <Users className="h-3 w-3 mr-1" />}
                     {catalog.visibility === "private"
-                      ? "Private"
+                      ? "Privado"
                       : catalog.visibility === "public"
-                        ? "Public"
-                        : "Invite Only"}
+                        ? "Público"
+                        : "Solo invitación"}
                   </Badge>
                   <Badge variant="secondary" className="text-xs">
                     <Users className="h-3 w-3 mr-1" />
-                    {catalog.sharedWith} buyers
+                    {catalog.sharedWith} compradores
                   </Badge>
                 </div>
 
-                <p className="text-xs text-muted-foreground mt-2">Updated {catalog.lastUpdated}</p>
+                <p className="text-xs text-muted-foreground mt-2">Actualizado {catalog.lastUpdated}</p>
               </div>
             </div>
           </Card>
@@ -144,13 +144,13 @@ export function CatalogsView() {
               <div className="w-16 h-16 rounded-full bg-muted mx-auto flex items-center justify-center mb-4">
                 <Package className="h-8 w-8 text-muted-foreground" />
               </div>
-              <h3 className="font-semibold mb-2">No catalogs yet</h3>
+              <h3 className="font-semibold mb-2">Aún no hay catálogos</h3>
               <p className="text-sm text-muted-foreground mb-4">
-                Create your first catalog to organize products for your buyers
+                Crea tu primer catálogo para organizar productos para tus compradores
               </p>
               <Button onClick={() => (window.location.href = "/catalogs/create")}>
                 <Plus className="h-4 w-4 mr-2" />
-                Create Catalog
+                Crear catálogo
               </Button>
             </CardContent>
           </Card>

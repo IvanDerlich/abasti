@@ -17,23 +17,23 @@ export function ProductDetail({ productId }: ProductDetailProps) {
 
   const product = {
     id: productId,
-    title: "Industrial Steel Beams - Grade A",
+    title: "Vigas de acero industrial - Grado A",
     company: "BuildCorp Industries",
     companyLogo: "/generic-company-logo.png",
-    price: "$2,450",
-    unit: "per ton",
-    stock: "In Stock - 500 tons",
+    price: "2.450 €",
+    unit: "por tonelada",
+    stock: "En stock - 500 toneladas",
     hasVideo: true,
     images: ["/industrial-steel-beams.jpg", "/steel-construction-materials.jpg", "/steel-warehouse-storage.jpg"],
     specs: [
-      { label: "Material", value: "High-grade steel alloy" },
-      { label: "Dimensions", value: "Custom sizes available" },
-      { label: "Minimum Order", value: "10 tons" },
-      { label: "Lead Time", value: "2-3 weeks" },
-      { label: "Certification", value: "ISO 9001, ASTM A36" },
+      { label: "Material", value: "Aleación de acero de alta calidad" },
+      { label: "Dimensiones", value: "Tamaños a medida disponibles" },
+      { label: "Pedido mínimo", value: "10 toneladas" },
+      { label: "Plazo de entrega", value: "2-3 semanas" },
+      { label: "Certificación", value: "ISO 9001, ASTM A36" },
     ],
     description:
-      "Premium industrial steel beams manufactured to exact specifications. Ideal for construction, manufacturing, and infrastructure projects. All products are quality tested and come with full certification documentation.",
+      "Vigas de acero industrial premium fabricadas según especificaciones exactas. Ideales para construcción, fabricación e infraestructura. Todos los productos pasan controles de calidad e incluyen documentación de certificación.",
   }
 
   return (
@@ -43,7 +43,7 @@ export function ProductDetail({ productId }: ProductDetailProps) {
         <Button variant="ghost" size="icon" onClick={() => window.history.back()}>
           <ArrowLeft className="h-5 w-5" />
         </Button>
-        <h1 className="text-lg font-semibold flex-1 line-clamp-1">Product Details</h1>
+        <h1 className="text-lg font-semibold flex-1 line-clamp-1">Detalles del producto</h1>
         <Button variant="ghost" size="icon">
           <Share2 className="h-5 w-5" />
         </Button>
@@ -107,7 +107,7 @@ export function ProductDetail({ productId }: ProductDetailProps) {
             onClick={() => (window.location.href = `/catalogs/add?product=${productId}`)}
           >
             <Plus className="h-4 w-4 mr-2" />
-            Add to Catalog
+            Añadir al catálogo
           </Button>
           <Button
             variant="outline"
@@ -133,10 +133,10 @@ export function ProductDetail({ productId }: ProductDetailProps) {
               </Avatar>
               <div className="flex-1">
                 <p className="font-semibold">{product.company}</p>
-                <p className="text-sm text-muted-foreground">Verified Seller</p>
+                <p className="text-sm text-muted-foreground">Vendedor verificado</p>
               </div>
               <Button variant="outline" size="sm">
-                View Profile
+                Ver perfil
               </Button>
             </div>
           </CardContent>
@@ -150,14 +150,14 @@ export function ProductDetail({ productId }: ProductDetailProps) {
                 <MessageCircle className="h-5 w-5 text-primary" />
               </div>
               <div className="flex-1">
-                <h3 className="font-semibold mb-1">Have questions?</h3>
-                <p className="text-sm text-muted-foreground mb-3">Ask Abasti AI for instant answers about this product</p>
+                <h3 className="font-semibold mb-1">¿Tienes preguntas?</h3>
+                <p className="text-sm text-muted-foreground mb-3">Pregunta a Abasti AI y obtén respuestas al instante sobre este producto</p>
                 <Button
                   variant="outline"
                   size="sm"
                   onClick={() => (window.location.href = `/chat?product=${productId}`)}
                 >
-                  Ask Abasti AI
+                  Preguntar a Abasti AI
                 </Button>
               </div>
             </div>
@@ -166,7 +166,7 @@ export function ProductDetail({ productId }: ProductDetailProps) {
 
         {/* Specifications */}
         <div>
-          <h3 className="font-semibold text-lg mb-4">Product Specifications</h3>
+          <h3 className="font-semibold text-lg mb-4">Especificaciones del producto</h3>
           <Card>
             <CardContent className="p-4 space-y-3">
               {product.specs.map((spec, index) => (
@@ -184,7 +184,7 @@ export function ProductDetail({ productId }: ProductDetailProps) {
 
         {/* Description */}
         <div>
-          <h3 className="font-semibold text-lg mb-4">Description</h3>
+          <h3 className="font-semibold text-lg mb-4">Descripción</h3>
           <Card>
             <CardContent className="p-4">
               <p className="text-muted-foreground leading-relaxed">{product.description}</p>
@@ -197,7 +197,7 @@ export function ProductDetail({ productId }: ProductDetailProps) {
       <div className="fixed bottom-0 left-0 right-0 p-4 bg-background border-t border-border md:left-64">
         <div className="flex items-center gap-3 max-w-3xl mx-auto">
           <div className="flex-1">
-            <div className="text-xs text-muted-foreground">Price</div>
+            <div className="text-xs text-muted-foreground">Precio</div>
             <div className="font-bold text-lg">
               {product.price}/{product.unit}
             </div>
@@ -207,7 +207,7 @@ export function ProductDetail({ productId }: ProductDetailProps) {
             className="flex-1 h-12"
             onClick={() => (window.location.href = `/checkout?product=${productId}`)}
           >
-            Add to Cart
+            Añadir al carrito
           </Button>
         </div>
       </div>

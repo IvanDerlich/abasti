@@ -91,7 +91,7 @@ export function CompanyProfile({ companyId }: { companyId: string }) {
               </svg>
             </Button>
           </Link>
-          <h1 className="text-lg font-semibold">Company Profile</h1>
+          <h1 className="text-lg font-semibold">Perfil de empresa</h1>
           <Button variant="ghost" size="icon">
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path
@@ -147,7 +147,7 @@ export function CompanyProfile({ companyId }: { companyId: string }) {
               ))}
             </div>
             <span className="text-sm font-medium">{mockCompany.rating}</span>
-            <span className="text-sm text-muted-foreground">({mockCompany.followers} reviews)</span>
+            <span className="text-sm text-muted-foreground">({mockCompany.followers} valoraciones)</span>
           </div>
 
           {/* Description */}
@@ -169,45 +169,45 @@ export function CompanyProfile({ companyId }: { companyId: string }) {
           <Card className="p-4 text-center">
             <Package className="w-5 h-5 mx-auto mb-2 text-primary" />
             <div className="text-xl font-bold">{mockCompany.stats.products}</div>
-            <div className="text-xs text-muted-foreground">Products</div>
+            <div className="text-xs text-muted-foreground">Productos</div>
           </Card>
           <Card className="p-4 text-center">
             <FolderOpen className="w-5 h-5 mx-auto mb-2 text-primary" />
             <div className="text-xl font-bold">{mockCompany.stats.catalogs}</div>
-            <div className="text-xs text-muted-foreground">Catalogs</div>
+            <div className="text-xs text-muted-foreground">Catálogos</div>
           </Card>
           <Card className="p-4 text-center">
             <ShoppingCart className="w-5 h-5 mx-auto mb-2 text-primary" />
             <div className="text-xl font-bold">{mockCompany.stats.orders}</div>
-            <div className="text-xs text-muted-foreground">Orders</div>
+            <div className="text-xs text-muted-foreground">Pedidos</div>
           </Card>
           <Card className="p-4 text-center">
             <Users className="w-5 h-5 mx-auto mb-2 text-primary" />
             <div className="text-xl font-bold">{mockCompany.stats.followers}</div>
-            <div className="text-xs text-muted-foreground">Followers</div>
+            <div className="text-xs text-muted-foreground">Seguidores</div>
           </Card>
         </div>
 
         {/* Quick Actions */}
         <Card className="p-4">
-          <h3 className="font-semibold mb-3">Quick Actions</h3>
+          <h3 className="font-semibold mb-3">Acciones rápidas</h3>
           <div className="grid grid-cols-3 gap-3">
             <Link href="/publish-product">
               <Button variant="outline" size="sm" className="w-full flex flex-col h-auto py-3 bg-transparent">
                 <Plus className="w-5 h-5 mb-1" />
-                <span className="text-xs">Add Product</span>
+                <span className="text-xs">Añadir producto</span>
               </Button>
             </Link>
             <Link href="/catalogs/create">
               <Button variant="outline" size="sm" className="w-full flex flex-col h-auto py-3 bg-transparent">
                 <FolderOpen className="w-5 h-5 mb-1" />
-                <span className="text-xs">New Catalog</span>
+                <span className="text-xs">Nuevo catálogo</span>
               </Button>
             </Link>
             <Link href={`/company/${companyId}/edit`}>
               <Button variant="outline" size="sm" className="w-full flex flex-col h-auto py-3 bg-transparent">
                 <Edit3 className="w-5 h-5 mb-1" />
-                <span className="text-xs">Edit Profile</span>
+                <span className="text-xs">Editar perfil</span>
               </Button>
             </Link>
           </div>
@@ -215,7 +215,7 @@ export function CompanyProfile({ companyId }: { companyId: string }) {
 
         {/* Contact Information */}
         <Card className="p-4">
-          <h3 className="font-semibold mb-4">Contact Information</h3>
+          <h3 className="font-semibold mb-4">Información de contacto</h3>
           <div className="space-y-3">
             <div className="flex items-center gap-3 text-sm">
               <Phone className="w-4 h-4 text-muted-foreground" />
@@ -238,7 +238,7 @@ export function CompanyProfile({ companyId }: { companyId: string }) {
 
         {/* Certifications */}
         <Card className="p-4">
-          <h3 className="font-semibold mb-4">Certifications & Badges</h3>
+          <h3 className="font-semibold mb-4">Certificaciones y distintivos</h3>
           <div className="space-y-2">
             {mockCompany.certifications.map((cert) => (
               <div key={cert} className="flex items-center gap-3">
@@ -252,10 +252,10 @@ export function CompanyProfile({ companyId }: { companyId: string }) {
         {/* Products Section */}
         <div>
           <div className="flex items-center justify-between mb-4">
-            <h3 className="font-semibold text-lg">Products & Services</h3>
+            <h3 className="font-semibold text-lg">Productos y servicios</h3>
             <Link href={`/company/${companyId}/products`}>
               <Button variant="ghost" size="sm">
-                View All
+                Ver todo
               </Button>
             </Link>
           </div>
@@ -285,10 +285,10 @@ export function CompanyProfile({ companyId }: { companyId: string }) {
         {/* Reviews Preview */}
         <Card className="p-4">
           <div className="flex items-center justify-between mb-4">
-            <h3 className="font-semibold">Reviews & Ratings</h3>
+            <h3 className="font-semibold">Opiniones y valoraciones</h3>
             <Link href={`/company/${companyId}/reviews`}>
               <Button variant="ghost" size="sm">
-                View All
+                Ver todo
               </Button>
             </Link>
           </div>
@@ -320,7 +320,7 @@ export function CompanyProfile({ companyId }: { companyId: string }) {
                 <span className="text-sm font-medium">4.0</span>
               </div>
               <p className="text-sm text-muted-foreground mb-2">
-                "Great products and customer service. Fast response times for custom orders."
+                "Buenos productos y atención al cliente. Respuesta rápida en pedidos a medida."
               </p>
               <p className="text-xs text-muted-foreground">- Industrial Solutions Inc.</p>
             </div>

@@ -19,13 +19,13 @@ const initialMessages: Message[] = [
   {
     id: 1,
     type: "system",
-    content: "You're asking about Industrial Steel Beams - Grade A",
+    content: "Estás preguntando sobre Vigas de acero industrial - Grado A",
   },
   {
     id: 2,
     type: "ai",
-    content: "Hi! I'm Abasti AI. I can help answer questions about this product. What would you like to know?",
-    suggestions: ["Request quote", "Stock availability", "Product specs", "Shipping options"],
+    content: "¡Hola! Soy Abasti AI. Puedo ayudarte con dudas sobre este producto. ¿Qué te gustaría saber?",
+    suggestions: ["Solicitar presupuesto", "Disponibilidad en stock", "Especificaciones", "Opciones de envío"],
   },
 ]
 
@@ -52,28 +52,28 @@ export function ChatInterface() {
       let aiResponse = ""
       const lowerText = text.toLowerCase()
 
-      if (lowerText.includes("quote") || lowerText.includes("price")) {
+      if (lowerText.includes("quote") || lowerText.includes("price") || lowerText.includes("presupuesto")) {
         aiResponse =
-          "The current price for Industrial Steel Beams - Grade A is $2,450 per ton. For bulk orders over 50 tons, we offer a 10% discount. Would you like me to generate a formal quote?"
-      } else if (lowerText.includes("stock") || lowerText.includes("available")) {
+          "El precio actual de Vigas de acero industrial - Grado A es 2.450 € por tonelada. Para pedidos superiores a 50 toneladas ofrecemos un 10% de descuento. ¿Quieres que genere un presupuesto formal?"
+      } else if (lowerText.includes("stock") || lowerText.includes("available") || lowerText.includes("disponibilidad")) {
         aiResponse =
-          "We currently have 500 tons in stock and ready to ship. The product is available for immediate delivery. Would you like to proceed with an order?"
-      } else if (lowerText.includes("spec") || lowerText.includes("detail")) {
+          "Actualmente tenemos 500 toneladas en stock listas para enviar. El producto está disponible para entrega inmediata. ¿Quieres proceder con un pedido?"
+      } else if (lowerText.includes("spec") || lowerText.includes("detail") || lowerText.includes("especificacion")) {
         aiResponse =
-          "This is a high-grade steel alloy certified to ISO 9001 and ASTM A36 standards. Custom sizes are available with a minimum order of 10 tons. Lead time is typically 2-3 weeks. Would you like the full technical specification sheet?"
-      } else if (lowerText.includes("ship") || lowerText.includes("deliver")) {
+          "Es una aleación de acero de alta calidad certificada según ISO 9001 y ASTM A36. Tamaños a medida disponibles con pedido mínimo de 10 toneladas. Plazo de entrega típico 2-3 semanas. ¿Quieres la ficha técnica completa?"
+      } else if (lowerText.includes("ship") || lowerText.includes("deliver") || lowerText.includes("envío")) {
         aiResponse =
-          "We offer worldwide shipping with multiple carrier options. Standard delivery takes 5-7 business days. Express shipping is available for urgent orders. What's your delivery location?"
+          "Ofrecemos envío internacional con varias opciones de transporte. La entrega estándar tarda 5-7 días laborables. Envío express disponible para pedidos urgentes. ¿Cuál es tu ubicación de entrega?"
       } else {
         aiResponse =
-          "I can help you with pricing, availability, specifications, and shipping for this product. What specific information do you need?"
+          "Puedo ayudarte con precios, disponibilidad, especificaciones y envío de este producto. ¿Qué información necesitas?"
       }
 
       const aiMessage: Message = {
         id: messages.length + 2,
         type: "ai",
         content: aiResponse,
-        suggestions: ["Request formal quote", "Check shipping cost", "Technical specs", "Place order"],
+        suggestions: ["Solicitar presupuesto formal", "Consultar coste de envío", "Ficha técnica", "Realizar pedido"],
       }
       setMessages((prev) => [...prev, aiMessage])
       setIsTyping(false)
@@ -98,7 +98,7 @@ export function ChatInterface() {
             </div>
             <div>
               <h1 className="text-lg font-semibold">Abasti AI</h1>
-              <p className="text-xs text-muted-foreground">Always available</p>
+              <p className="text-xs text-muted-foreground">Siempre disponible</p>
             </div>
           </div>
         </div>
@@ -200,35 +200,35 @@ export function ChatInterface() {
             variant="outline"
             size="sm"
             className="whitespace-nowrap rounded-full bg-transparent"
-            onClick={() => handleSendMessage("Request quote")}
+            onClick={() => handleSendMessage("Solicitar presupuesto")}
           >
             <DollarSign className="h-4 w-4 mr-2" />
-            Request Quote
+            Solicitar presupuesto
           </Button>
           <Button
             variant="outline"
             size="sm"
             className="whitespace-nowrap rounded-full bg-transparent"
-            onClick={() => handleSendMessage("Stock availability")}
+            onClick={() => handleSendMessage("Disponibilidad en stock")}
           >
             <Package className="h-4 w-4 mr-2" />
-            Stock Info
+            Stock
           </Button>
           <Button
             variant="outline"
             size="sm"
             className="whitespace-nowrap rounded-full bg-transparent"
-            onClick={() => handleSendMessage("Shipping options")}
+            onClick={() => handleSendMessage("Opciones de envío")}
           >
             <Truck className="h-4 w-4 mr-2" />
-            Shipping
+            Envío
           </Button>
         </div>
 
         {/* Input */}
         <div className="flex gap-2">
           <Input
-            placeholder="Ask about this product..."
+            placeholder="Pregunta sobre este producto..."
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={(e) => {

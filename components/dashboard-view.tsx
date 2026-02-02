@@ -21,28 +21,28 @@ import {
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 
 const orders = [
-  { id: "ORD-1024", product: "Industrial Steel Beams", status: "delivered", amount: "$24,500", date: "2 days ago" },
-  { id: "ORD-1023", product: "Office Furniture Set", status: "in-transit", amount: "$12,500", date: "1 week ago" },
-  { id: "ORD-1022", product: "Cloud Server Hosting", status: "processing", amount: "$3,200", date: "2 weeks ago" },
+  { id: "ORD-1024", product: "Vigas de acero industrial", status: "entregado", amount: "24.500 €", date: "Hace 2 días" },
+  { id: "ORD-1023", product: "Lote muebles de oficina", status: "en tránsito", amount: "12.500 €", date: "Hace 1 semana" },
+  { id: "ORD-1022", product: "Hosting en la nube", status: "procesando", amount: "3.200 €", date: "Hace 2 semanas" },
 ]
 
 const automations = [
   {
     id: 1,
-    name: "Steel Beams - Weekly",
-    product: "Industrial Steel Beams",
-    frequency: "Weekly",
+    name: "Vigas de acero - Semanal",
+    product: "Vigas de acero industrial",
+    frequency: "Semanal",
     status: "active",
-    nextOrder: "In 3 days",
+    nextOrder: "En 3 días",
     totalOrders: 12,
   },
   {
     id: 2,
-    name: "Office Supplies - Monthly",
-    product: "Office Supplies Bundle",
-    frequency: "Monthly",
+    name: "Suministros oficina - Mensual",
+    product: "Pack suministros de oficina",
+    frequency: "Mensual",
     status: "paused",
-    nextOrder: "Paused",
+    nextOrder: "Pausado",
     totalOrders: 8,
   },
 ]
@@ -58,7 +58,7 @@ export function DashboardView() {
           <Button variant="ghost" size="icon" onClick={() => window.history.back()}>
             <ArrowLeft className="h-5 w-5" />
           </Button>
-          <h1 className="text-2xl font-bold">Dashboard</h1>
+          <h1 className="text-2xl font-bold">Panel de control</h1>
           <div className="ml-auto">
             <Button size="sm" onClick={() => (window.location.href = "/publish-product")}>
               <Plus className="h-4 w-4 mr-2" />
@@ -89,10 +89,10 @@ export function DashboardView() {
             <CardContent className="p-4">
               <div className="flex items-center gap-2 text-muted-foreground mb-2">
                 <Repeat className="h-4 w-4" />
-                <span className="text-xs">Automations</span>
+                <span className="text-xs">Automatizaciones</span>
               </div>
               <div className="text-2xl font-bold">8</div>
-              <div className="text-xs text-muted-foreground mt-1">2 active</div>
+              <div className="text-xs text-muted-foreground mt-1">2 activas</div>
             </CardContent>
           </Card>
 
@@ -100,10 +100,10 @@ export function DashboardView() {
             <CardContent className="p-4">
               <div className="flex items-center gap-2 text-muted-foreground mb-2">
                 <Grid3x3 className="h-4 w-4" />
-                <span className="text-xs">Catalogs</span>
+                <span className="text-xs">Catálogos</span>
               </div>
               <div className="text-2xl font-bold">12</div>
-              <div className="text-xs text-muted-foreground mt-1">245 views</div>
+              <div className="text-xs text-muted-foreground mt-1">245 visitas</div>
             </CardContent>
           </Card>
 
@@ -111,7 +111,7 @@ export function DashboardView() {
             <CardContent className="p-4">
               <div className="flex items-center gap-2 text-muted-foreground mb-2">
                 <Eye className="h-4 w-4" />
-                <span className="text-xs">Total Views</span>
+                <span className="text-xs">Total visitas</span>
               </div>
               <div className="text-2xl font-bold">2.4K</div>
               <div className="flex items-center gap-1 text-xs text-green-600 mt-1">
@@ -145,9 +145,9 @@ export function DashboardView() {
         {/* Tabs */}
         <Tabs value={activeTab} onValueChange={setActiveTab}>
           <TabsList className="w-full grid grid-cols-3">
-            <TabsTrigger value="orders">Orders</TabsTrigger>
-            <TabsTrigger value="automations">Automations</TabsTrigger>
-            <TabsTrigger value="messages">Messages</TabsTrigger>
+            <TabsTrigger value="orders">Pedidos</TabsTrigger>
+            <TabsTrigger value="automations">Automatizaciones</TabsTrigger>
+            <TabsTrigger value="messages">Mensajes</TabsTrigger>
           </TabsList>
 
           <TabsContent value="orders" className="space-y-3 mt-4">
@@ -161,9 +161,9 @@ export function DashboardView() {
                     </div>
                     <Badge
                       variant={
-                        order.status === "delivered"
+                        order.status === "entregado"
                           ? "default"
-                          : order.status === "in-transit"
+                          : order.status === "en tránsito"
                             ? "secondary"
                             : "outline"
                       }
@@ -196,12 +196,12 @@ export function DashboardView() {
                           {automation.status === "active" ? (
                             <>
                               <Play className="h-3 w-3 mr-1" />
-                              Active
+                              Activa
                             </>
                           ) : (
                             <>
                               <Pause className="h-3 w-3 mr-1" />
-                              Paused
+                              Pausada
                             </>
                           )}
                         </Badge>
@@ -215,24 +215,24 @@ export function DashboardView() {
                         </Button>
                       </DropdownMenuTrigger>
                       <DropdownMenuContent align="end">
-                        <DropdownMenuItem>Edit Automation</DropdownMenuItem>
-                        <DropdownMenuItem>{automation.status === "active" ? "Pause" : "Resume"}</DropdownMenuItem>
-                        <DropdownMenuItem className="text-destructive">Delete</DropdownMenuItem>
+                        <DropdownMenuItem>Editar automatización</DropdownMenuItem>
+                        <DropdownMenuItem>{automation.status === "active" ? "Pausar" : "Reanudar"}</DropdownMenuItem>
+                        <DropdownMenuItem className="text-destructive">Eliminar</DropdownMenuItem>
                       </DropdownMenuContent>
                     </DropdownMenu>
                   </div>
 
                   <div className="grid grid-cols-3 gap-3 pt-3 border-t border-border">
                     <div>
-                      <p className="text-xs text-muted-foreground">Frequency</p>
+                      <p className="text-xs text-muted-foreground">Frecuencia</p>
                       <p className="font-medium text-sm">{automation.frequency}</p>
                     </div>
                     <div>
-                      <p className="text-xs text-muted-foreground">Next Order</p>
+                      <p className="text-xs text-muted-foreground">Próximo pedido</p>
                       <p className="font-medium text-sm">{automation.nextOrder}</p>
                     </div>
                     <div>
-                      <p className="text-xs text-muted-foreground">Completed</p>
+                      <p className="text-xs text-muted-foreground">Completados</p>
                       <p className="font-medium text-sm">{automation.totalOrders}</p>
                     </div>
                   </div>
@@ -256,9 +256,9 @@ export function DashboardView() {
                 <div className="w-16 h-16 rounded-full bg-muted mx-auto flex items-center justify-center mb-4">
                   <MessageSquare className="h-8 w-8 text-muted-foreground" />
                 </div>
-                <h3 className="font-semibold mb-2">No messages yet</h3>
+                <h3 className="font-semibold mb-2">Aún no hay mensajes</h3>
                 <p className="text-sm text-muted-foreground">
-                  Your conversations with buyers and sellers will appear here
+                  Tus conversaciones con compradores y vendedores aparecerán aquí
                 </p>
               </CardContent>
             </Card>

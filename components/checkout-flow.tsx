@@ -18,12 +18,12 @@ export function CheckoutFlow() {
   const [cryptoStatus, setCryptoStatus] = useState<"pending" | "confirmed" | "completed">("pending")
 
   const orderSummary = {
-    product: "Industrial Steel Beams - Grade A",
-    quantity: "100 tons",
-    unitPrice: "$2,450",
-    subtotal: "$245,000",
-    tax: "$24,500",
-    total: "$269,500",
+    product: "Vigas de acero industrial - Grado A",
+    quantity: "100 toneladas",
+    unitPrice: "2.450 €",
+    subtotal: "245.000 €",
+    tax: "24.500 €",
+    total: "269.500 €",
   }
 
   const handleCardPayment = () => {
@@ -45,30 +45,30 @@ export function CheckoutFlow() {
             <Check className="h-10 w-10 text-green-600" />
           </div>
           <div className="space-y-2">
-            <h1 className="text-2xl font-bold">Payment Successful!</h1>
-            <p className="text-muted-foreground">Your order has been confirmed and will be processed shortly.</p>
+            <h1 className="text-2xl font-bold">¡Pago realizado!</h1>
+            <p className="text-muted-foreground">Tu pedido ha sido confirmado y se procesará en breve.</p>
           </div>
           <Card>
             <CardContent className="p-4">
               <div className="space-y-2 text-sm">
                 <div className="flex justify-between">
-                  <span className="text-muted-foreground">Order ID</span>
+                  <span className="text-muted-foreground">ID de pedido</span>
                   <span className="font-mono font-medium">ORD-1025</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-muted-foreground">Amount</span>
+                  <span className="text-muted-foreground">Importe</span>
                   <span className="font-bold">{orderSummary.total}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-muted-foreground">Payment Method</span>
-                  <span className="capitalize">{paymentMethod === "card" ? "Card" : "Stablecoin"}</span>
+                  <span className="text-muted-foreground">Método de pago</span>
+                  <span className="capitalize">{paymentMethod === "card" ? "Tarjeta" : "Stablecoin"}</span>
                 </div>
               </div>
             </CardContent>
           </Card>
           <div className="space-y-3">
             <Button size="lg" className="w-full h-14" onClick={() => (window.location.href = "/dashboard")}>
-              View Order Status
+              Ver estado del pedido
             </Button>
             <Button
               size="lg"
@@ -76,7 +76,7 @@ export function CheckoutFlow() {
               className="w-full h-14 bg-transparent"
               onClick={() => (window.location.href = "/marketplace")}
             >
-              Continue Shopping
+              Seguir comprando
             </Button>
           </div>
         </div>
@@ -91,7 +91,7 @@ export function CheckoutFlow() {
           <Button variant="ghost" size="icon" onClick={() => setStep("method")}>
             <ArrowLeft className="h-5 w-5" />
           </Button>
-          <h1 className="text-lg font-semibold">Stablecoin Payment</h1>
+          <h1 className="text-lg font-semibold">Pago con stablecoin</h1>
         </div>
 
         <div className="p-4 max-w-2xl mx-auto space-y-6">
@@ -170,16 +170,16 @@ export function CheckoutFlow() {
                 <div className="flex-1">
                   <p className="font-semibold">
                     {cryptoStatus === "pending" && "Waiting for payment..."}
-                    {cryptoStatus === "confirmed" && "Payment detected!"}
-                    {cryptoStatus === "completed" && "Payment confirmed"}
+                    {cryptoStatus === "confirmed" && "¡Pago detectado!"}
+                    {cryptoStatus === "completed" && "Pago confirmado"}
                   </p>
                   <p className="text-sm text-muted-foreground">
                     {cryptoStatus === "pending" && "Send USDC to the address above"}
-                    {cryptoStatus === "confirmed" && "Confirming on blockchain..."}
+                    {cryptoStatus === "confirmed" && "Confirmando en la blockchain..."}
                     {cryptoStatus === "completed" && "Transaction completed successfully"}
                   </p>
                 </div>
-                {cryptoStatus === "completed" && <Badge className="bg-green-500">Confirmed</Badge>}
+                {cryptoStatus === "completed" && <Badge className="bg-green-500">Confirmado</Badge>}
               </div>
             </CardContent>
           </Card>
@@ -191,10 +191,10 @@ export function CheckoutFlow() {
                   <div className="flex items-start gap-3">
                     <Shield className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
                     <div className="flex-1">
-                      <p className="font-medium text-sm mb-1">Payment Verified</p>
+                      <p className="font-medium text-sm mb-1">Pago verificado</p>
                       <p className="text-xs text-muted-foreground mb-2">Transaction hash: 0x7d3e...9f2a</p>
                       <Button variant="link" size="sm" className="h-auto p-0 text-xs">
-                        View on Explorer
+                        Ver en el explorador
                         <ExternalLink className="h-3 w-3 ml-1" />
                       </Button>
                     </div>
@@ -219,14 +219,14 @@ export function CheckoutFlow() {
           <Button variant="ghost" size="icon" onClick={() => setStep("method")}>
             <ArrowLeft className="h-5 w-5" />
           </Button>
-          <h1 className="text-lg font-semibold">Card Payment</h1>
+          <h1 className="text-lg font-semibold">Pago con tarjeta</h1>
         </div>
 
         <div className="p-4 max-w-2xl mx-auto space-y-6">
           <Card>
             <CardContent className="p-4 space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="card-number">Card Number *</Label>
+                <Label htmlFor="card-number">Número de tarjeta *</Label>
                 <div className="relative">
                   <Input id="card-number" placeholder="1234 5678 9012 3456" className="h-12 pr-12" />
                   <CreditCard className="absolute right-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
@@ -245,7 +245,7 @@ export function CheckoutFlow() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="cardholder">Cardholder Name *</Label>
+                <Label htmlFor="cardholder">Nombre del titular *</Label>
                 <Input id="cardholder" placeholder="John Doe" className="h-12" />
               </div>
             </CardContent>
@@ -253,7 +253,7 @@ export function CheckoutFlow() {
 
           <Card>
             <CardHeader>
-              <CardTitle className="text-base">Billing Address</CardTitle>
+              <CardTitle className="text-base">Dirección de facturación</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="space-y-2">
@@ -279,7 +279,7 @@ export function CheckoutFlow() {
               <div className="flex items-start gap-3">
                 <Shield className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
                 <div>
-                  <p className="font-medium text-sm mb-1">Secure Payment</p>
+                  <p className="font-medium text-sm mb-1">Pago seguro</p>
                   <p className="text-xs text-muted-foreground">
                     Your payment information is encrypted and secure. We never store your full card details.
                   </p>
@@ -312,7 +312,7 @@ export function CheckoutFlow() {
         {/* Order Summary */}
         <Card>
           <CardHeader>
-            <CardTitle className="text-base">Order Summary</CardTitle>
+            <CardTitle className="text-base">Resumen del pedido</CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
             <div className="flex gap-3">
@@ -323,7 +323,7 @@ export function CheckoutFlow() {
               />
               <div className="flex-1">
                 <h3 className="font-semibold text-sm line-clamp-2">{orderSummary.product}</h3>
-                <p className="text-sm text-muted-foreground">Qty: {orderSummary.quantity}</p>
+                <p className="text-sm text-muted-foreground">Cant.: {orderSummary.quantity}</p>
               </div>
             </div>
 
@@ -335,7 +335,7 @@ export function CheckoutFlow() {
                 <span className="font-medium">{orderSummary.subtotal}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-muted-foreground">Tax (10%)</span>
+                <span className="text-muted-foreground">IVA (10%)</span>
                 <span className="font-medium">{orderSummary.tax}</span>
               </div>
               <Separator />
@@ -350,7 +350,7 @@ export function CheckoutFlow() {
         {/* Payment Method Selection */}
         <Card>
           <CardHeader>
-            <CardTitle className="text-base">Payment Method</CardTitle>
+            <CardTitle className="text-base">Método de pago</CardTitle>
           </CardHeader>
           <CardContent>
             <RadioGroup value={paymentMethod} onValueChange={(value) => setPaymentMethod(value as "card" | "crypto")}>
@@ -362,7 +362,7 @@ export function CheckoutFlow() {
                       <div className="flex items-center gap-2 mb-2">
                         <CreditCard className="h-5 w-5" />
                         <Label htmlFor="card" className="font-semibold cursor-pointer">
-                          Credit / Debit Card
+                          Tarjeta de crédito / débito
                         </Label>
                       </div>
                       <p className="text-sm text-muted-foreground mb-2">Pay securely with your credit or debit card</p>
@@ -390,11 +390,11 @@ export function CheckoutFlow() {
                       <div className="flex items-center gap-2 mb-2">
                         <Wallet className="h-5 w-5" />
                         <Label htmlFor="crypto" className="font-semibold cursor-pointer">
-                          Stablecoin Payment
+                          Pago con stablecoin
                         </Label>
                         <Badge className="bg-green-500 text-xs">Lower Fees</Badge>
                       </div>
-                      <p className="text-sm text-muted-foreground mb-2">Pay with USDC or USDT on multiple networks</p>
+                      <p className="text-sm text-muted-foreground mb-2">Paga con USDC o USDT en varias redes</p>
                       <div className="flex gap-2">
                         <Badge variant="secondary" className="text-xs">
                           USDC
@@ -445,7 +445,7 @@ export function CheckoutFlow() {
             }
           }}
         >
-          Continue to Payment
+          Continuar al pago
         </Button>
       </div>
     </div>

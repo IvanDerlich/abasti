@@ -27,9 +27,9 @@ export function CreateAutomationForm() {
             <ArrowLeft className="h-5 w-5" />
           </Button>
           <div className="flex-1">
-            <h1 className="text-lg font-semibold">Setup Auto-Purchase</h1>
+            <h1 className="text-lg font-semibold">Configurar compra automática</h1>
             <p className="text-sm text-muted-foreground">
-              Step {step} of {totalSteps}
+              Paso {step} de {totalSteps}
             </p>
           </div>
         </div>
@@ -49,7 +49,7 @@ export function CreateAutomationForm() {
             {/* Product Selection */}
             <Card>
               <CardContent className="p-4">
-                <Label className="mb-3 block">Product or Catalog</Label>
+                <Label className="mb-3 block">Producto o catálogo</Label>
                 <Card className="border-primary">
                   <CardContent className="p-3">
                     <div className="flex gap-3">
@@ -71,14 +71,14 @@ export function CreateAutomationForm() {
             {/* Frequency */}
             <Card>
               <CardContent className="p-4 space-y-3">
-                <Label>Purchase Frequency *</Label>
+                <Label>Frecuencia de compra *</Label>
                 <RadioGroup value={frequency} onValueChange={setFrequency}>
                   <Card className={frequency === "daily" ? "border-primary" : ""}>
                     <CardContent className="p-3">
                       <div className="flex items-center gap-3">
                         <RadioGroupItem value="daily" id="daily" />
                         <Label htmlFor="daily" className="font-medium cursor-pointer flex-1">
-                          Daily
+                          Diario
                         </Label>
                       </div>
                     </CardContent>
@@ -89,7 +89,7 @@ export function CreateAutomationForm() {
                       <div className="flex items-center gap-3">
                         <RadioGroupItem value="weekly" id="weekly" />
                         <Label htmlFor="weekly" className="font-medium cursor-pointer flex-1">
-                          Weekly
+                          Semanal
                         </Label>
                       </div>
                     </CardContent>
@@ -100,7 +100,7 @@ export function CreateAutomationForm() {
                       <div className="flex items-center gap-3">
                         <RadioGroupItem value="monthly" id="monthly" />
                         <Label htmlFor="monthly" className="font-medium cursor-pointer flex-1">
-                          Monthly
+                          Mensual
                         </Label>
                       </div>
                     </CardContent>
@@ -111,7 +111,7 @@ export function CreateAutomationForm() {
                       <div className="flex items-center gap-3">
                         <RadioGroupItem value="custom" id="custom" />
                         <Label htmlFor="custom" className="font-medium cursor-pointer flex-1">
-                          Custom Schedule
+                          Programación personalizada
                         </Label>
                       </div>
                     </CardContent>
@@ -120,17 +120,17 @@ export function CreateAutomationForm() {
 
                 {frequency === "custom" && (
                   <div className="pt-2">
-                    <Label className="text-sm">Every</Label>
+                    <Label className="text-sm">Cada</Label>
                     <div className="flex gap-2 mt-2">
                       <Input type="number" placeholder="7" className="flex-1" />
                       <Select>
                         <SelectTrigger className="flex-1">
-                          <SelectValue placeholder="days" />
+                          <SelectValue placeholder="días" />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="days">Days</SelectItem>
-                          <SelectItem value="weeks">Weeks</SelectItem>
-                          <SelectItem value="months">Months</SelectItem>
+                          <SelectItem value="days">Días</SelectItem>
+                          <SelectItem value="weeks">Semanas</SelectItem>
+                          <SelectItem value="months">Meses</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
@@ -147,7 +147,7 @@ export function CreateAutomationForm() {
             <Card>
               <CardContent className="p-4 space-y-4">
                 <div className="space-y-2">
-                  <Label htmlFor="quantity">Quantity per Order *</Label>
+                  <Label htmlFor="quantity">Cantidad por pedido *</Label>
                   <div className="relative">
                     <Package className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                     <Input id="quantity" type="number" placeholder="100" className="pl-10 h-12" />
@@ -155,16 +155,16 @@ export function CreateAutomationForm() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="unit">Unit</Label>
+                  <Label htmlFor="unit">Unidad</Label>
                   <Select>
                     <SelectTrigger id="unit" className="h-12">
-                      <SelectValue placeholder="Select unit" />
+                      <SelectValue placeholder="Selecciona unidad" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="tons">Tons</SelectItem>
-                      <SelectItem value="units">Units</SelectItem>
-                      <SelectItem value="boxes">Boxes</SelectItem>
-                      <SelectItem value="pallets">Pallets</SelectItem>
+                      <SelectItem value="tons">Toneladas</SelectItem>
+                      <SelectItem value="units">Unidades</SelectItem>
+                      <SelectItem value="boxes">Cajas</SelectItem>
+                      <SelectItem value="pallets">Palés</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -175,13 +175,13 @@ export function CreateAutomationForm() {
             <Card>
               <CardContent className="p-4 space-y-4">
                 <div className="space-y-2">
-                  <Label htmlFor="max-budget">Maximum Budget per Order (Optional)</Label>
+                  <Label htmlFor="max-budget">Presupuesto máximo por pedido (opcional)</Label>
                   <div className="relative">
                     <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                     <Input id="max-budget" type="number" placeholder="50000" className="pl-10 h-12" />
                   </div>
                   <p className="text-xs text-muted-foreground">
-                    Orders exceeding this amount will require manual approval
+                    Los pedidos que superen esta cantidad requerirán aprobación manual
                   </p>
                 </div>
               </CardContent>
@@ -194,10 +194,10 @@ export function CreateAutomationForm() {
                   <Switch id="auto-approve" checked={autoApprove} onCheckedChange={setAutoApprove} />
                   <div className="flex-1">
                     <Label htmlFor="auto-approve" className="cursor-pointer font-medium">
-                      Auto-approve orders
+                      Aprobar pedidos automáticamente
                     </Label>
                     <p className="text-sm text-muted-foreground mt-1">
-                      Automatically approve and process orders without manual review
+                      Aprobar y procesar pedidos automáticamente sin revisión manual
                     </p>
                   </div>
                 </div>
@@ -212,13 +212,13 @@ export function CreateAutomationForm() {
             <Card>
               <CardContent className="p-4 space-y-4">
                 <div className="space-y-2">
-                  <Label htmlFor="delivery-address">Delivery Address *</Label>
-                  <Input id="delivery-address" placeholder="Enter delivery address" className="h-12" />
+                  <Label htmlFor="delivery-address">Dirección de entrega *</Label>
+                  <Input id="delivery-address" placeholder="Introduce la dirección de entrega" className="h-12" />
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="delivery-notes">Delivery Notes (Optional)</Label>
-                  <Input id="delivery-notes" placeholder="Special instructions..." className="h-12" />
+                  <Label htmlFor="delivery-notes">Notas de entrega (opcional)</Label>
+                  <Input id="delivery-notes" placeholder="Instrucciones especiales..." className="h-12" />
                 </div>
               </CardContent>
             </Card>
@@ -226,7 +226,7 @@ export function CreateAutomationForm() {
             {/* Payment Method */}
             <Card>
               <CardContent className="p-4 space-y-3">
-                <Label>Payment Method *</Label>
+                <Label>Método de pago *</Label>
                 <RadioGroup value={paymentMethod} onValueChange={setPaymentMethod}>
                   <Card className={paymentMethod === "card" ? "border-primary bg-primary/5" : ""}>
                     <CardContent className="p-3">
@@ -235,7 +235,7 @@ export function CreateAutomationForm() {
                         <CreditCard className="h-5 w-5 text-muted-foreground" />
                         <div className="flex-1">
                           <Label htmlFor="card" className="font-medium cursor-pointer">
-                            Credit/Debit Card
+                            Tarjeta de crédito/débito
                           </Label>
                           <p className="text-xs text-muted-foreground">Visa •••• 4242</p>
                         </div>
@@ -250,7 +250,7 @@ export function CreateAutomationForm() {
                         <Wallet className="h-5 w-5 text-muted-foreground" />
                         <div className="flex-1">
                           <Label htmlFor="crypto" className="font-medium cursor-pointer">
-                            Stablecoin Wallet
+                            Monedero stablecoin
                           </Label>
                           <p className="text-xs text-muted-foreground">USDC / USDT</p>
                         </div>
@@ -260,7 +260,7 @@ export function CreateAutomationForm() {
                 </RadioGroup>
 
                 <Button variant="outline" className="w-full bg-transparent">
-                  Add New Payment Method
+                  Añadir nuevo método de pago
                 </Button>
               </CardContent>
             </Card>
@@ -268,19 +268,19 @@ export function CreateAutomationForm() {
             {/* Summary */}
             <Card className="bg-muted/50">
               <CardContent className="p-4 space-y-3">
-                <h3 className="font-semibold">Automation Summary</h3>
+                <h3 className="font-semibold">Resumen de la automatización</h3>
                 <div className="space-y-2 text-sm">
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">Frequency</span>
                     <span className="font-medium capitalize">{frequency}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-muted-foreground">Auto-approve</span>
+                    <span className="text-muted-foreground">Auto-aprobar</span>
                     <span className="font-medium">{autoApprove ? "Enabled" : "Disabled"}</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">Payment</span>
-                    <span className="font-medium">{paymentMethod === "card" ? "Card" : "Stablecoin"}</span>
+                    <span className="font-medium">{paymentMethod === "card" ? "Tarjeta" : "Stablecoin"}</span>
                   </div>
                 </div>
               </CardContent>
@@ -303,11 +303,11 @@ export function CreateAutomationForm() {
           }}
         >
           {step < totalSteps ? (
-            "Continue"
+            "Continuar"
           ) : (
             <>
               <Check className="h-5 w-5 mr-2" />
-              Create Automation
+              Crear automatización
             </>
           )}
         </Button>

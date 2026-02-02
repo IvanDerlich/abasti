@@ -15,24 +15,24 @@ const catalogProducts = [
     id: 1,
     name: "Industrial Steel Beams",
     price: "$2,450/ton",
-    stock: "In Stock",
+    stock: "En stock",
     image: "/placeholder.svg?key=hrrei",
   },
   {
     id: 2,
     name: "Cloud Server Hosting",
-    price: "Request Quote",
-    stock: "Available",
+    price: "Solicitar presupuesto",
+    stock: "Disponible",
     image: "/placeholder.svg?key=duau3",
   },
-  { id: 3, name: "Office Furniture Set", price: "$12,500", stock: "In Stock", image: "/placeholder.svg?key=bntss" },
+  { id: 3, name: "Office Furniture Set", price: "$12,500", stock: "En stock", image: "/placeholder.svg?key=bntss" },
 ]
 
 export function CatalogDetail({ catalogId }: CatalogDetailProps) {
   const catalog = {
     id: catalogId,
-    name: "Manufacturing Essentials",
-    description: "Essential products for manufacturing operations",
+    name: "Esenciales de manufactura",
+    description: "Productos esenciales para operaciones de manufactura",
     visibility: "private",
     productCount: 24,
     sharedWith: 8,
@@ -50,7 +50,7 @@ export function CatalogDetail({ catalogId }: CatalogDetailProps) {
           </Button>
           <div className="flex-1">
             <h1 className="text-lg font-semibold line-clamp-1">{catalog.name}</h1>
-            <p className="text-sm text-muted-foreground">{catalog.productCount} products</p>
+            <p className="text-sm text-muted-foreground">{catalog.productCount} productos</p>
           </div>
           <Button variant="ghost" size="icon">
             <Share2 className="h-5 w-5" />
@@ -62,10 +62,10 @@ export function CatalogDetail({ catalogId }: CatalogDetailProps) {
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-              <DropdownMenuItem>Edit Catalog</DropdownMenuItem>
-              <DropdownMenuItem>Manage Products</DropdownMenuItem>
-              <DropdownMenuItem>Share Settings</DropdownMenuItem>
-              <DropdownMenuItem className="text-destructive">Delete</DropdownMenuItem>
+              <DropdownMenuItem>Editar catálogo</DropdownMenuItem>
+              <DropdownMenuItem>Gestionar productos</DropdownMenuItem>
+              <DropdownMenuItem>Configuración de compartir</DropdownMenuItem>
+              <DropdownMenuItem className="text-destructive">Eliminar</DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
@@ -80,13 +80,13 @@ export function CatalogDetail({ catalogId }: CatalogDetailProps) {
             <div className="flex flex-wrap gap-2">
               <Badge variant="outline">
                 <Lock className="h-3 w-3 mr-1" />
-                Private
+                Privado
               </Badge>
-              <Badge variant="secondary">{catalog.sharedWith} buyers</Badge>
-              {catalog.minOrder && <Badge variant="outline">Min. Order: {catalog.minOrder} units</Badge>}
+              <Badge variant="secondary">{catalog.sharedWith} compradores</Badge>
+              {catalog.minOrder && <Badge variant="outline">Ped. mín.: {catalog.minOrder} unidades</Badge>}
               {catalog.bulkDiscount && (
                 <Badge variant="outline" className="bg-primary/10 text-primary border-primary/20">
-                  {catalog.bulkDiscount}% Bulk Discount
+                  {catalog.bulkDiscount}% descuento por volumen
                 </Badge>
               )}
             </div>
@@ -101,10 +101,10 @@ export function CatalogDetail({ catalogId }: CatalogDetailProps) {
                 <Share2 className="h-5 w-5 text-primary" />
               </div>
               <div className="flex-1">
-                <h3 className="font-semibold mb-1">Share this catalog</h3>
-                <p className="text-sm text-muted-foreground mb-3">Generate a secure link to share with your buyers</p>
+                <h3 className="font-semibold mb-1">Compartir este catálogo</h3>
+                <p className="text-sm text-muted-foreground mb-3">Genera un enlace seguro para compartir con tus compradores</p>
                 <Button variant="outline" size="sm">
-                  Generate Share Link
+                  Generar enlace para compartir
                 </Button>
               </div>
             </div>
