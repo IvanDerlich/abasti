@@ -165,7 +165,7 @@ export function CompanyProfile({ companyId }: { companyId: string }) {
         </Card>
 
         {/* Stats Row */}
-        <div className="grid grid-cols-4 gap-3">
+        <div className="grid grid-cols-3 gap-3">
           <Card className="p-4 text-center">
             <Package className="w-5 h-5 mx-auto mb-2 text-primary" />
             <div className="text-xl font-bold">{mockCompany.stats.products}</div>
@@ -180,11 +180,6 @@ export function CompanyProfile({ companyId }: { companyId: string }) {
             <ShoppingCart className="w-5 h-5 mx-auto mb-2 text-primary" />
             <div className="text-xl font-bold">{mockCompany.stats.orders}</div>
             <div className="text-xs text-muted-foreground">Pedidos</div>
-          </Card>
-          <Card className="p-4 text-center">
-            <Users className="w-5 h-5 mx-auto mb-2 text-primary" />
-            <div className="text-xl font-bold">{mockCompany.stats.followers}</div>
-            <div className="text-xs text-muted-foreground">Seguidores</div>
           </Card>
         </div>
 

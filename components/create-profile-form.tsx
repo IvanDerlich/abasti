@@ -7,12 +7,33 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Checkbox } from "@/components/ui/checkbox"
-import { ArrowLeft, Upload } from "lucide-react"
+import { ArrowLeft, Upload, Eye, EyeOff, X } from "lucide-react"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import Image from "next/image"
 
 export function CreateProfileForm() {
   const [step, setStep] = useState(1)
   const [companyType, setCompanyType] = useState("both")
+  const [logo, setLogo] = useState<File | null>(null)
+  const [logoPreview, setLogoPreview] = useState<string>("")
+  const [showPassword, setShowPassword] = useState(false)
+
+  const handleLogoUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    if (file && ["image/png", "image/jpeg", "image/svg+xml"].includes(file.type)) {
+      setLogo(file)
+      const reader = new FileReader()
+      reader.onloadend = () => {
+        setLogoPreview(reader.result as string)
+      }
+      reader.readAsDataURL(file)
+    }
+  }
+
+  const handleRemoveLogo = () => {
+    setLogo(null)
+    setLogoPreview("")
+  }
 
   const totalSteps = 3
 
@@ -84,7 +105,7 @@ export function CreateProfileForm() {
             <>
               <div className="space-y-4">
                 <div className="space-y-2">
-                  <Label htmlFor="email">Business Email *</Label>
+                  <Label htmlFor="email">Correo de la Empresa *</Label>
                   <Input id="email" type="email" placeholder="contact@company.com" className="h-12" />
                 </div>
 
@@ -97,20 +118,93 @@ export function CreateProfileForm() {
                   <Label>Logo de la empresa</Label>
                   <Card className="border-2 border-dashed">
                     <CardContent className="p-8">
-                      <div className="flex flex-col items-center text-center space-y-4">
-                        <div className="w-16 h-16 rounded-full bg-muted flex items-center justify-center">
-                          <Upload className="h-8 w-8 text-muted-foreground" />
+                      {logoPreview ? (
+                        <div className="flex flex-col items-center gap-4">
+                          <div className="relative w-24 h-24">
+                            <Image
+                              src={logoPreview}
+                              alt="Logo preview"
+                              fill
+                              className="object-contain"
+                            />
+                          </div>
+                          <div className="flex gap-2">
+                            <input
+                              type="file"
+                              accept=".png,.jpg,.jpeg,.svg"
+                              onChange={handleLogoUpload}
+                              className="hidden"
+                              id="logo-upload-2"
+                            />
+                            <Button
+                              type="button"
+                              variant="outline"
+                              size="sm"
+                              onClick={() => document.getElementById("logo-upload-2")?.click()}
+                            >
+                              Cambiar
+                            </Button>
+                            <Button
+                              type="button"
+                              variant="destructive"
+                              size="sm"
+                              onClick={handleRemoveLogo}
+                            >
+                              <X className="h-4 w-4" />
+                            </Button>
+                          </div>
                         </div>
-                        <div>
-                          <p className="font-medium">Subir logo de la empresa</p>
-                          <p className="text-sm text-muted-foreground">PNG, JPG hasta 5 MB</p>
+                      ) : (
+                        <div className="flex flex-col items-center text-center space-y-4">
+                          <div className="w-16 h-16 rounded-full bg-muted flex items-center justify-center">
+                            <Upload className="h-8 w-8 text-muted-foreground" />
+                          </div>
+                          <div>
+                            <p className="font-medium">Subir logo de la empresa</p>
+                            <p className="text-sm text-muted-foreground">PNG, JPG, SVG hasta 5 MB</p>
+                          </div>
+                          <input
+                            type="file"
+                            accept=".png,.jpg,.jpeg,.svg"
+                            onChange={handleLogoUpload}
+                            className="hidden"
+                            id="logo-upload"
+                          />
+                          <Button
+                            type="button"
+                            variant="outline"
+                            onClick={() => document.getElementById("logo-upload")?.click()}
+                          >
+                            Elegir archivo
+                          </Button>
                         </div>
-                        <Button type="button" variant="outline">
-                          Elegir archivo
-                        </Button>
-                      </div>
+                      )}
                     </CardContent>
                   </Card>
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="password">Contraseña *</Label>
+                  <div className="relative">
+                    <Input
+                      id="password"
+                      type={showPassword ? "text" : "password"}
+                      placeholder="Mínimo 8 caracteres"
+                      className="h-12 pr-10"
+                      minLength={8}
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setShowPassword(!showPassword)}
+                      className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                    >
+                      {showPassword ? (
+                        <EyeOff className="h-5 w-5" />
+                      ) : (
+                        <Eye className="h-5 w-5" />
+                      )}
+                    </button>
+                  </div>
                 </div>
               </div>
             </>
@@ -119,68 +213,27 @@ export function CreateProfileForm() {
           {step === 3 && (
             <>
               <div className="space-y-6">
-                <div className="space-y-4">
-                  <Label>Tipo de empresa *</Label>
-                  <RadioGroup value={companyType} onValueChange={setCompanyType}>
-                    <Card className={companyType === "buyer" ? "border-primary" : ""}>
-                      <CardContent className="p-4">
-                        <div className="flex items-start gap-3">
-                          <RadioGroupItem value="buyer" id="buyer" className="mt-1" />
-                          <div className="flex-1">
-                            <Label htmlFor="buyer" className="font-medium cursor-pointer">
-                              Comprador
-                            </Label>
-                            <p className="text-sm text-muted-foreground">
-                              Comprar productos y servicios a otras empresas
-                            </p>
-                          </div>
-                        </div>
-                      </CardContent>
-                    </Card>
-
-                    <Card className={companyType === "seller" ? "border-primary" : ""}>
-                      <CardContent className="p-4">
-                        <div className="flex items-start gap-3">
-                          <RadioGroupItem value="seller" id="seller" className="mt-1" />
-                          <div className="flex-1">
-                            <Label htmlFor="seller" className="font-medium cursor-pointer">
-                              Vendedor
-                            </Label>
-                            <p className="text-sm text-muted-foreground">
-                              Vender productos y servicios a otras empresas
-                            </p>
-                          </div>
-                        </div>
-                      </CardContent>
-                    </Card>
-
-                    <Card className={companyType === "both" ? "border-primary" : ""}>
-                      <CardContent className="p-4">
-                        <div className="flex items-start gap-3">
-                          <RadioGroupItem value="both" id="both" className="mt-1" />
-                          <div className="flex-1">
-                            <Label htmlFor="both" className="font-medium cursor-pointer">
-                              Ambos
-                            </Label>
-                            <p className="text-sm text-muted-foreground">Comprar y vender en el marketplace</p>
-                          </div>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </RadioGroup>
-                </div>
-
                 <Card className="bg-muted/50">
                   <CardContent className="p-4">
                     <div className="flex gap-3">
                       <Checkbox id="terms" />
                       <div className="space-y-1">
                         <Label htmlFor="terms" className="text-sm font-normal cursor-pointer">
-                          Acepto los Términos de Servicio y la Política de Privacidad
+                          Acepto los Términos de Servicio *
                         </Label>
-                        <p className="text-xs text-muted-foreground">
-                          Al crear una cuenta, aceptas nuestros términos y condiciones
-                        </p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card className="bg-muted/50">
+                  <CardContent className="p-4">
+                    <div className="flex gap-3">
+                      <Checkbox id="privacy" />
+                      <div className="space-y-1">
+                        <Label htmlFor="privacy" className="text-sm font-normal cursor-pointer">
+                          Acepto la Política de Privacidad *
+                        </Label>
                       </div>
                     </div>
                   </CardContent>
@@ -192,10 +245,9 @@ export function CreateProfileForm() {
       </div>
 
       {/* Fixed bottom button */}
-      <div className="fixed bottom-0 left-0 right-0 p-6 bg-background border-t border-border">
+      <div className="fixed bottom-0 left-0 right-0 p-6 bg-background border-t border-border flex justify-center">
         <Button
-          size="lg"
-          className="w-full text-base font-medium h-14"
+          className="w-[280px] h-10 text-base font-medium"
           onClick={() => (step < totalSteps ? setStep(step + 1) : (window.location.href = "/marketplace"))}
         >
           {step < totalSteps ? "Continuar" : "Crear perfil"}

@@ -5,6 +5,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { ArrowLeft, Share2, MoreVertical, Lock, Package } from "lucide-react"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
+import { useToast } from "@/components/ui/use-toast"
 
 interface CatalogDetailProps {
   catalogId: string
@@ -29,6 +30,8 @@ const catalogProducts = [
 ]
 
 export function CatalogDetail({ catalogId }: CatalogDetailProps) {
+  const { toast } = useToast()
+  
   const catalog = {
     id: catalogId,
     name: "Esenciales de manufactura",
@@ -94,22 +97,18 @@ export function CatalogDetail({ catalogId }: CatalogDetailProps) {
         </Card>
 
         {/* Share Link Card */}
-        <Card className="bg-primary/5 border-primary/20">
-          <CardContent className="p-4">
-            <div className="flex items-start gap-3">
-              <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                <Share2 className="h-5 w-5 text-primary" />
-              </div>
-              <div className="flex-1">
-                <h3 className="font-semibold mb-1">Compartir este catálogo</h3>
-                <p className="text-sm text-muted-foreground mb-3">Genera un enlace seguro para compartir con tus compradores</p>
-                <Button variant="outline" size="sm">
-                  Generar enlace para compartir
-                </Button>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
+        <div className="flex justify-center">
+          <Button
+            size="icon"
+            variant="outline"
+            onClick={() => {
+              navigator.clipboard.writeText(window.location.href)
+              toast({ title: "Enlace copiado", description: "El enlace del catálogo ha sido copiado al portapapeles" })
+            }}
+          >
+            <Share2 className="h-5 w-5" />
+          </Button>
+        </div>
 
         {/* Products */}
         <div className="space-y-3">

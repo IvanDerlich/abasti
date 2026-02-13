@@ -90,6 +90,11 @@ const products = [
 export function MarketplaceView() {
   const [selectedCategory, setSelectedCategory] = useState("Todos");
   const [activeTab, setActiveTab] = useState("home");
+  const [isPublishModalOpen, setIsPublishModalOpen] = useState(false);
+
+  const handleOpenPublishModal = () => {
+    setIsPublishModalOpen(true);
+  };
 
   const filteredProducts =
     selectedCategory === "Todos"
@@ -208,7 +213,7 @@ export function MarketplaceView() {
       <Button
         size="icon"
         className="fixed bottom-24 right-6 h-14 w-14 rounded-full shadow-lg"
-        onClick={() => (window.location.href = "/create-listing")}
+        onClick={handleOpenPublishModal}
       >
         <Plus className="h-6 w-6" />
       </Button>
