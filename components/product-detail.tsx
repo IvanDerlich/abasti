@@ -10,9 +10,10 @@ import { ArrowLeft, Share2, Bookmark, Video, Building2, Package } from "lucide-r
 
 interface ProductDetailProps {
   productId: string
+  fromVendorCatalog?: boolean
 }
 
-export function ProductDetail({ productId }: ProductDetailProps) {
+export function ProductDetail({ productId, fromVendorCatalog = false }: ProductDetailProps) {
   const [currentImage, setCurrentImage] = useState(0)
 
   const product = {
@@ -154,14 +155,32 @@ export function ProductDetail({ productId }: ProductDetailProps) {
 
       {/* Sticky Bottom Bar */}
       <div className="fixed bottom-0 left-0 right-0 p-4 bg-background border-t border-border md:left-64">
-        <div className="flex items-center justify-center max-w-3xl mx-auto">
-          <div className="text-center">
-            <div className="text-xs text-muted-foreground">Precio</div>
-            <div className="font-bold text-lg">
-              {product.price}/{product.unit}
+        {!fromVendorCatalog ? (
+          <div className="flex items-center justify-center max-w-3xl mx-auto">
+            <div className="text-center">
+              <div className="text-xs text-muted-foreground">Precio</div>
+              <div className="font-bold text-lg">
+                {product.price}/{product.unit}
+              </div>
             </div>
           </div>
-        </div>
+        ) : (
+          <div className="flex items-center gap-3 max-w-3xl mx-auto">
+            <div className="flex-1">
+              <div className="text-xs text-muted-foreground">Precio</div>
+              <div className="font-bold text-lg">
+                {product.price}/{product.unit}
+              </div>
+            </div>
+            <Button
+              size="lg"
+              className="flex-1 h-12"
+              onClick={() => (window.location.href = `/checkout?product=${productId}`)}
+            >
+              Agregar al carrito
+            </Button>
+          </div>
+        )}
       </div>
     </div>
   )

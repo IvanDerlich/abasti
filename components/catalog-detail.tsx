@@ -107,29 +107,31 @@ export function CatalogDetail({ catalogId }: CatalogDetailProps) {
       </div>
 
       <div className="p-4 space-y-4">
-        {/* Catalog Info */}
-        <Card>
-          <CardContent className="p-4 space-y-3">
-            <p className="text-sm text-muted-foreground leading-relaxed">{catalog.description}</p>
+        {/* Catalog Info - Hidden for other vendor catalogs */}
+        {!isOtherVendorCatalog && (
+          <Card>
+            <CardContent className="p-4 space-y-3">
+              <p className="text-sm text-muted-foreground leading-relaxed">{catalog.description}</p>
 
-            <div className="flex flex-wrap gap-2">
-              <Badge variant="outline">
-                <Lock className="h-3 w-3 mr-1" />
-                Privado
-              </Badge>
-              <Badge variant="secondary">{catalog.sharedWith} compradores</Badge>
-              {catalog.minOrder && <Badge variant="outline">Ped. mín.: {catalog.minOrder} unidades</Badge>}
-              {catalog.bulkDiscount && (
-                <Badge variant="outline" className="bg-primary/10 text-primary border-primary/20">
-                  {catalog.bulkDiscount}% descuento por volumen
+              <div className="flex flex-wrap gap-2">
+                <Badge variant="outline">
+                  <Lock className="h-3 w-3 mr-1" />
+                  Privado
                 </Badge>
-              )}
-            </div>
+                <Badge variant="secondary">{catalog.sharedWith} compradores</Badge>
+                {catalog.minOrder && <Badge variant="outline">Ped. mín.: {catalog.minOrder} unidades</Badge>}
+                {catalog.bulkDiscount && (
+                  <Badge variant="outline" className="bg-primary/10 text-primary border-primary/20">
+                    {catalog.bulkDiscount}% descuento por volumen
+                  </Badge>
+                )}
+              </div>
 
-            {/* Share link input */}
-            <ShareLinkInput toast={toast} />
-          </CardContent>
-        </Card>
+              {/* Share link input */}
+              <ShareLinkInput toast={toast} />
+            </CardContent>
+          </Card>
+        )}
 
         {/* Products */}
         <div className="space-y-3">
@@ -146,7 +148,7 @@ export function CatalogDetail({ catalogId }: CatalogDetailProps) {
             <Card
               key={product.id}
               className="cursor-pointer hover:shadow-lg transition-shadow"
-              onClick={() => (window.location.href = `/product/${product.id}`)}
+              onClick={() => (window.location.href = isOtherVendorCatalog ? `/product/${product.id}?fromVendorCatalog=true` : `/product/${product.id}`)}
             >
               <div className="flex gap-4 p-4">
                 <img
