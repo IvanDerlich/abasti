@@ -17,6 +17,7 @@ export function CreateProfileForm() {
   const [logo, setLogo] = useState<File | null>(null)
   const [logoPreview, setLogoPreview] = useState<string>("")
   const [showPassword, setShowPassword] = useState(false)
+  const [acceptedTerms, setAcceptedTerms] = useState(false)
 
   const handleLogoUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
@@ -110,6 +111,30 @@ export function CreateProfileForm() {
                 </div>
 
                 <div className="space-y-2">
+                  <Label htmlFor="password">Contraseña *</Label>
+                  <div className="relative">
+                    <Input
+                      id="password"
+                      type={showPassword ? "text" : "password"}
+                      placeholder="Mínimo 8 caracteres"
+                      className="h-12 pr-10"
+                      minLength={8}
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setShowPassword(!showPassword)}
+                      className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                    >
+                      {showPassword ? (
+                        <EyeOff className="h-5 w-5" />
+                      ) : (
+                        <Eye className="h-5 w-5" />
+                      )}
+                    </button>
+                  </div>
+                </div>
+
+                <div className="space-y-2">
                   <Label htmlFor="phone">Teléfono *</Label>
                   <Input id="phone" type="tel" placeholder="+34 600 000 000" className="h-12" />
                 </div>
@@ -182,30 +207,6 @@ export function CreateProfileForm() {
                     </CardContent>
                   </Card>
                 </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="password">Contraseña *</Label>
-                  <div className="relative">
-                    <Input
-                      id="password"
-                      type={showPassword ? "text" : "password"}
-                      placeholder="Mínimo 8 caracteres"
-                      className="h-12 pr-10"
-                      minLength={8}
-                    />
-                    <button
-                      type="button"
-                      onClick={() => setShowPassword(!showPassword)}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
-                    >
-                      {showPassword ? (
-                        <EyeOff className="h-5 w-5" />
-                      ) : (
-                        <Eye className="h-5 w-5" />
-                      )}
-                    </button>
-                  </div>
-                </div>
               </div>
             </>
           )}
@@ -213,28 +214,58 @@ export function CreateProfileForm() {
           {step === 3 && (
             <>
               <div className="space-y-6">
-                <Card className="bg-muted/50">
-                  <CardContent className="p-4">
-                    <div className="flex gap-3">
-                      <Checkbox id="terms" />
-                      <div className="space-y-1">
-                        <Label htmlFor="terms" className="text-sm font-normal cursor-pointer">
-                          Acepto los Términos de Servicio *
-                        </Label>
+                <Card className="bg-gradient-to-br from-primary/10 to-primary/5 border-primary/20">
+                  <CardContent className="p-6">
+                    <h3 className="font-semibold text-lg mb-4">Términos de Servicio y Política de Privacidad</h3>
+                    
+                    <div className="bg-white border border-border rounded-lg mb-4 h-48 overflow-y-auto p-4">
+                      <div className="space-y-4 text-sm text-muted-foreground leading-relaxed">
+                        <div>
+                          <h4 className="font-semibold text-foreground mb-2">Términos de Servicio</h4>
+                          <p>
+                            Al usar nuestra plataforma, aceptas estos términos y condiciones. Nos reservamos el derecho de modificar 
+                            estos términos en cualquier momento. Tu uso continuado de la plataforma constituyará tu aceptación de 
+                            cualquier cambio. Eres responsable de mantener la confidencialidad de tu cuenta y contraseña, y de todas 
+                            las actividades que ocurran bajo tu cuenta. Aceptas no usar la plataforma para participar en actividades 
+                            ilegales o que violen derechos de terceros.
+                          </p>
+                        </div>
+
+                        <div>
+                          <h4 className="font-semibold text-foreground mb-2">Política de Privacidad</h4>
+                          <p>
+                            Recopilamos información que proporcionas directamente y a través de tu uso de nuestros servicios. Esta 
+                            información puede incluir nombre, dirección de correo electrónico, número de teléfono e información de 
+                            perfil de empresa. Usamos tus datos para proporcionar, mantener y mejorar nuestros servicios, así como 
+                            para comunicarnos contigo. Tus datos se procesan de acuerdo con nuestras prácticas de privacidad y se 
+                            protegen mediante medidas de seguridad estándar de la industria. No compartimos tu información personal 
+                            con terceros sin tu consentimiento, excepto cuando sea requerido por ley.
+                          </p>
+                        </div>
+
+                        <div>
+                          <h4 className="font-semibold text-foreground mb-2">Limitación de Responsabilidad</h4>
+                          <p>
+                            La plataforma se proporciona "tal cual" sin garantías de ningún tipo. No seremos responsables por daños 
+                            indirectos, incidentales, especiales, consecuentes o punitivos que resulten de tu uso o incapacidad para 
+                            usar la plataforma. Tu uso de la plataforma es bajo tu propio riesgo.
+                          </p>
+                        </div>
                       </div>
                     </div>
-                  </CardContent>
-                </Card>
 
-                <Card className="bg-muted/50">
-                  <CardContent className="p-4">
-                    <div className="flex gap-3">
-                      <Checkbox id="privacy" />
-                      <div className="space-y-1">
-                        <Label htmlFor="privacy" className="text-sm font-normal cursor-pointer">
-                          Acepto la Política de Privacidad *
-                        </Label>
-                      </div>
+                    <div className="flex items-start gap-3 p-4 bg-white border border-border rounded-lg">
+                      <Checkbox 
+                        id="accept-terms" 
+                        checked={acceptedTerms}
+                        onCheckedChange={(checked) => setAcceptedTerms(checked as boolean)}
+                      />
+                      <Label 
+                        htmlFor="accept-terms" 
+                        className="text-sm font-normal cursor-pointer pt-1"
+                      >
+                        Acepto los Términos de Servicio y Políticas de Privacidad *
+                      </Label>
                     </div>
                   </CardContent>
                 </Card>

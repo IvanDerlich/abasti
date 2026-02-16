@@ -38,6 +38,30 @@ const catalogs = [
   },
 ]
 
+const othersVendorsCatalogs = [
+  {
+    id: 101,
+    name: "Componentes Electrónicos Premium",
+    vendor: "TechSupply Corp",
+    productCount: 234,
+    image: "/placeholder.svg?key=vendor1",
+  },
+  {
+    id: 102,
+    name: "Materiales Construcción 2025",
+    vendor: "BuildMaterial SA",
+    productCount: 156,
+    image: "/placeholder.svg?key=vendor2",
+  },
+  {
+    id: 103,
+    name: "Insumos Textiles Industrial",
+    vendor: "TextilePro Global",
+    productCount: 89,
+    image: "/placeholder.svg?key=vendor3",
+  },
+]
+
 export function CatalogsView() {
   const [searchQuery, setSearchQuery] = useState("")
 
@@ -155,6 +179,46 @@ export function CatalogsView() {
             </CardContent>
           </Card>
         )}
+
+        {/* Other Vendors Catalogs Section */}
+        <div className="pt-6">
+          <h2 className="text-xl font-bold mb-4">Catálogos de otros vendedores</h2>
+          <div className="space-y-3">
+            {othersVendorsCatalogs.map((catalog) => (
+              <Card
+                key={catalog.id}
+                className="cursor-pointer hover:shadow-lg transition-shadow"
+                onClick={() => (window.location.href = `/catalogs/${catalog.id}`)}
+              >
+                <div className="flex">
+                  <div className="w-28 h-28 bg-muted flex-shrink-0">
+                    <img
+                      src={catalog.image || "/placeholder.svg"}
+                      alt={catalog.name}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="flex-1 p-4">
+                    <div className="flex items-start justify-between gap-2 mb-2">
+                      <div className="flex-1">
+                        <h3 className="font-semibold leading-tight line-clamp-1">{catalog.name}</h3>
+                        <p className="text-sm text-muted-foreground mt-1">
+                          <span className="font-medium">{catalog.vendor}</span> • {catalog.productCount} productos
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex flex-wrap items-center gap-2 mt-3">
+                      <Badge variant="secondary" className="text-xs">
+                        <Globe className="h-3 w-3 mr-1" />
+                        Público
+                      </Badge>
+                    </div>
+                  </div>
+                </div>
+              </Card>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   )

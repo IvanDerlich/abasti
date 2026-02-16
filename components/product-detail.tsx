@@ -6,7 +6,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { ArrowLeft, Share2, Bookmark, Video, Building2, Package, MessageCircle, Plus, Repeat } from "lucide-react"
+import { ArrowLeft, Share2, Bookmark, Video, Building2, Package } from "lucide-react"
 
 interface ProductDetailProps {
   productId: string
@@ -100,25 +100,6 @@ export function ProductDetail({ productId }: ProductDetailProps) {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 gap-3">
-          <Button
-            variant="outline"
-            className="h-12 bg-transparent"
-            onClick={() => (window.location.href = `/catalogs/add?product=${productId}`)}
-          >
-            <Plus className="h-4 w-4 mr-2" />
-            Añadir al catálogo
-          </Button>
-          <Button
-            variant="outline"
-            className="h-12 bg-transparent"
-            onClick={() => (window.location.href = `/automation/create?product=${productId}`)}
-          >
-            <Repeat className="h-4 w-4 mr-2" />
-            Auto-Purchase
-          </Button>
-        </div>
-
         <Separator />
 
         {/* Company Info */}
@@ -138,28 +119,6 @@ export function ProductDetail({ productId }: ProductDetailProps) {
               <Button variant="outline" size="sm">
                 Ver perfil
               </Button>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Automated Chat CTA */}
-        <Card className="border-primary/50 bg-primary/5">
-          <CardContent className="p-4">
-            <div className="flex items-start gap-3">
-              <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                <MessageCircle className="h-5 w-5 text-primary" />
-              </div>
-              <div className="flex-1">
-                <h3 className="font-semibold mb-1">¿Tienes preguntas?</h3>
-                <p className="text-sm text-muted-foreground mb-3">Pregunta a Abasti AI y obtén respuestas al instante sobre este producto</p>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={() => (window.location.href = `/chat?product=${productId}`)}
-                >
-                  Preguntar a Abasti AI
-                </Button>
-              </div>
             </div>
           </CardContent>
         </Card>
@@ -193,22 +152,15 @@ export function ProductDetail({ productId }: ProductDetailProps) {
         </div>
       </div>
 
-      {/* Sticky Bottom Bar - Only Add to Cart button here */}
+      {/* Sticky Bottom Bar */}
       <div className="fixed bottom-0 left-0 right-0 p-4 bg-background border-t border-border md:left-64">
-        <div className="flex items-center gap-3 max-w-3xl mx-auto">
-          <div className="flex-1">
+        <div className="flex items-center justify-center max-w-3xl mx-auto">
+          <div className="text-center">
             <div className="text-xs text-muted-foreground">Precio</div>
             <div className="font-bold text-lg">
               {product.price}/{product.unit}
             </div>
           </div>
-          <Button
-            size="lg"
-            className="flex-1 h-12"
-            onClick={() => (window.location.href = `/checkout?product=${productId}`)}
-          >
-            Añadir al carrito
-          </Button>
         </div>
       </div>
     </div>
