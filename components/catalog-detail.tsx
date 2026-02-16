@@ -60,6 +60,8 @@ function ShareLinkInput({ toast }: { toast: any }) {
 
 export function CatalogDetail({ catalogId }: CatalogDetailProps) {
   const { toast } = useToast()
+  console.log("CatalogDetail rendered with catalogId:", catalogId)
+  // Catalogs with ID >= 100 are from other vendors
   const isOtherVendorCatalog = parseInt(catalogId) >= 100
   
   const catalog = {
