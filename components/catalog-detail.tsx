@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge"
 import { ArrowLeft, Share2, MoreVertical, Lock, Package, Copy } from "lucide-react"
 import * as React from "react"
 import { useEffect, useState } from "react"
+import { usePathname } from "next/navigation"
 import { Input } from "@/components/ui/input"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { useToast } from "@/components/ui/use-toast"
@@ -60,12 +61,20 @@ function ShareLinkInput({ toast }: { toast: any }) {
 
 export function CatalogDetail({ catalogId }: CatalogDetailProps) {
   const { toast } = useToast()
-  console.log("CatalogDetail rendered with catalogId:", catalogId)
+  const pathname = usePathname()
+  
+  // Extract catalogId from URL path (/catalogs/101 -> 101)
+  const urlCatalogId = pathname.split('/').pop() || catalogId
+  
+  console.log("CatalogDetail - pathname:", pathname)
+  console.log("CatalogDetail - extracted ID:", urlCatalogId)
+  
   // Catalogs with ID >= 100 are from other vendors
-  const isOtherVendorCatalog = parseInt(catalogId) >= 100
+  const isOtherVendorCatalog = parseInt(urlCatalogId) >= 100
+  console.log("CatalogDetail - isOtherVendorCatalog:", isOtherVendorCatalog)
   
   const catalog = {
-    id: catalogId,
+    id: urlCatalogId,
     name: "Esenciales de manufactura",
     description: "Productos esenciales para operaciones de manufactura",
     visibility: "private",
