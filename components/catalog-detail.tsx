@@ -65,13 +65,9 @@ export function CatalogDetail({ catalogId }: CatalogDetailProps) {
   
   // Extract catalogId from URL path (/catalogs/101 -> 101)
   const urlCatalogId = pathname.split('/').pop() || catalogId
-  
-  console.log("CatalogDetail - pathname:", pathname)
-  console.log("CatalogDetail - extracted ID:", urlCatalogId)
-  
+
   // Catalogs with ID >= 100 are from other vendors
   const isOtherVendorCatalog = parseInt(urlCatalogId) >= 100
-  console.log("CatalogDetail - isOtherVendorCatalog:", isOtherVendorCatalog)
   
   const catalog = {
     id: urlCatalogId,
