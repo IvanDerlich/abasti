@@ -267,5 +267,6 @@ export function DashboardView() {
         </Tabs>
       </div>
     </div>
+  </div>
   )
 }
