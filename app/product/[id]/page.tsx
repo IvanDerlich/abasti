@@ -1,12 +1,14 @@
 import { ProductDetail } from "@/components/product-detail"
 
-export default function ProductPage({ 
+export default async function ProductPage({ 
   params, 
   searchParams 
 }: { 
   params: { id: string }
   searchParams: { [key: string]: string | string[] | undefined }
 }) {
-  const fromVendorCatalog = searchParams.fromVendorCatalog === 'true'
-  return <ProductDetail productId={params.id} fromVendorCatalog={fromVendorCatalog} />
+  const resolvedParams = await params;
+  const resolvedSearchParams = await searchParams;
+  const fromVendorCatalog = resolvedSearchParams.fromVendorCatalog === 'true';
+  return <ProductDetail productId={resolvedParams.id} fromVendorCatalog={fromVendorCatalog} />
 }
