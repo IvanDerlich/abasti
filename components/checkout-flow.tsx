@@ -144,7 +144,7 @@ export function CheckoutFlow() {
 
   // Eliminado el flujo de tarjeta
 
-  // Payment Method Selection
+  // Payment Method Selection (like automation)
   return (
     <div className="min-h-screen bg-background pb-24">
       <div className="sticky top-0 bg-background border-b border-border z-10 p-4 flex items-center gap-4">
@@ -154,7 +154,7 @@ export function CheckoutFlow() {
         <h1 className="text-lg font-semibold">Checkout</h1>
       </div>
 
-      <div className="p-4 max-w-2xl mx-auto space-y-6">
+      <div className="p-4 max-w-2xl mx-auto space-y-4">
         {/* Order Summary */}
         <Card>
           <CardHeader>
@@ -193,17 +193,106 @@ export function CheckoutFlow() {
           </CardContent>
         </Card>
 
-        {/* QR Payment Only */}
+        {/* Payment Method Selection */}
         <Card>
-          <CardHeader className="flex justify-center">
-            <CardTitle className="text-base text-center w-full">Pago con QR</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="flex flex-col items-center gap-4">
-              <img src="/qr-placeholder.png" alt="QR de pago" className="w-72 h-72" />
+          <CardContent className="p-4 space-y-3">
+            <Label>Método de pago *</Label>
+            <RadioGroup value={paymentMethod} onValueChange={setPaymentMethod}>
+              <Card className={paymentMethod === "qr" ? "border-primary bg-primary/5" : ""}>
+                <CardContent className="p-3">
+                  <div className="flex items-center gap-3">
+                    <RadioGroupItem value="qr" id="qr" />
+                    <img
+                      src="/qr-placeholder.png"
+                      alt="QR para pago"
+                      className="h-36 w-36 text-muted-foreground border rounded"
+                    />
+                    <div className="flex-1">
+                      <Label htmlFor="qr" className="font-medium cursor-pointer">
+                        Pago con QR
+                      </Label>
+                      <p className="text-xs text-muted-foreground">Escanea para pagar</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className={paymentMethod === "crypto" ? "border-primary bg-primary/5" : ""}>
+                <CardContent className="p-3">
+                  <div className="flex items-center gap-3">
+                    <RadioGroupItem value="crypto" id="crypto" />
+                    <Wallet className="h-5 w-5 text-muted-foreground" />
+                    <div className="flex-1">
+                      <Label htmlFor="crypto" className="font-medium cursor-pointer">
+                        Monedero stablecoin
+                      </Label>
+                      <p className="text-xs text-muted-foreground">USDC / USDT</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </RadioGroup>
+
+            <Button variant="outline" className="w-full bg-transparent">
+              Añadir nuevo método de pago
+            </Button>
+          </CardContent>
+        </Card>
+
+        {/* Summary */}
+        <Card className="bg-muted/50">
+          <CardContent className="p-4 space-y-3">
+            <h3 className="font-semibold">Resumen del checkout</h3>
+            <div className="space-y-2 text-sm">
+              <div className="flex justify-between">
+                <span className="text-muted-foreground">Producto</span>
+                <span className="font-medium">{orderSummary.product}</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-muted-foreground">Cantidad</span>
+                <span className="font-medium">{orderSummary.quantity}</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-muted-foreground">Total</span>
+                <span className="font-medium">{orderSummary.total}</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-muted-foreground">Pago</span>
+                <span className="font-medium">
+                  {paymentMethod === "qr" ? (
+                    <>
+                      Pago con QR
+                      <img
+                        src="/qr-placeholder.png"
+                        alt="QR para pago"
+                        className="w-24 h-24 inline-block ml-2 align-middle border rounded"
+                      />
+                    </>
+                  ) : (
+                    'Stablecoin'
+                  )}
+                </span>
+              </div>
             </div>
           </CardContent>
         </Card>
+
+        {/* Fixed Bottom Button */}
+        <div className="fixed bottom-0 left-0 right-0 p-4 bg-background border-t border-border">
+          <Button
+            size="lg"
+            className="w-full h-14"
+            onClick={() => {
+              if (paymentMethod === "qr") {
+                setStep("qr-payment")
+              } else {
+                setStep("success")
+              }
+            }}
+          >
+            Continuar
+          </Button>
+        </div>
       </div>
     </div>
   )
