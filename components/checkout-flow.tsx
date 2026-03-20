@@ -57,7 +57,7 @@ export function CheckoutFlow() {
                 </div>
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">Método de pago</span>
-                  <span className="capitalize">{paymentMethod === "card" ? "Tarjeta" : "Stablecoin"}</span>
+                  <span className="capitalize">Pago con QR</span>
                 </div>
               </div>
             </CardContent>
@@ -97,7 +97,7 @@ export function CheckoutFlow() {
               <div className="text-center space-y-2">
                 <p className="text-sm text-muted-foreground">Escanea el QR para pagar</p>
                 <div className="w-full flex justify-center">
-                  <img src="/qr-placeholder.png" alt="QR de pago" className="w-48 h-48" />
+                  <img src="/qr-placeholder.png" alt="QR de pago" className="w-72 h-72" />
                 </div>
                 <p className="text-xs text-muted-foreground">Monto: {orderSummary.total} USDC</p>
               </div>
@@ -200,7 +200,7 @@ export function CheckoutFlow() {
           </CardHeader>
           <CardContent>
             <div className="flex flex-col items-center gap-4">
-              <img src="/qr-placeholder.png" alt="QR de pago" className="w-48 h-48" />
+              <img src="/qr-placeholder.png" alt="QR de pago" className="w-72 h-72" />
             </div>
           </CardContent>
         </Card>

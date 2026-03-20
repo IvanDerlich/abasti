@@ -228,16 +228,20 @@ export function CreateAutomationForm() {
               <CardContent className="p-4 space-y-3">
                 <Label>Método de pago *</Label>
                 <RadioGroup value={paymentMethod} onValueChange={setPaymentMethod}>
-                  <Card className={paymentMethod === "card" ? "border-primary bg-primary/5" : ""}>
+                  <Card className={paymentMethod === "qr" ? "border-primary bg-primary/5" : ""}>
                     <CardContent className="p-3">
                       <div className="flex items-center gap-3">
-                        <RadioGroupItem value="card" id="card" />
-                        <CreditCard className="h-5 w-5 text-muted-foreground" />
+                        <RadioGroupItem value="qr" id="qr" />
+                        <img
+                          src="/qr-placeholder.png"
+                          alt="QR para pago"
+                          className="h-36 w-36 text-muted-foreground border rounded"
+                        />
                         <div className="flex-1">
-                          <Label htmlFor="card" className="font-medium cursor-pointer">
-                            Tarjeta de crédito/débito
+                          <Label htmlFor="qr" className="font-medium cursor-pointer">
+                            Pago con QR
                           </Label>
-                          <p className="text-xs text-muted-foreground">Visa •••• 4242</p>
+                          <p className="text-xs text-muted-foreground">Escanea para pagar</p>
                         </div>
                       </div>
                     </CardContent>
@@ -280,7 +284,20 @@ export function CreateAutomationForm() {
                   </div>
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">Payment</span>
-                    <span className="font-medium">{paymentMethod === "card" ? "Tarjeta" : "Stablecoin"}</span>
+                    <span className="font-medium">
+                      {paymentMethod === "qr" ? (
+                        <>
+                          Pago con QR
+                          <img
+                            src="/qr-placeholder.png"
+                            alt="QR para pago"
+                            className="w-24 h-24 inline-block ml-2 align-middle border rounded"
+                          />
+                        </>
+                      ) : (
+                        'Stablecoin'
+                      )}
+                    </span>
                   </div>
                 </div>
               </CardContent>
